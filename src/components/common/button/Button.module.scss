@@ -1,0 +1,16 @@
+@import 'src/assets/styles/variables';
+
+.button {
+	width: 315px;
+	height: 60px;
+	font-size: 18px;
+	color: $white;
+	font-weight: $bold;
+	background: $bg-blue;
+	border-radius: 99px;
+	box-shadow: $bs-default;
+
+	&:hover {
+		background: $bg-purple-blue;
+	}
+}

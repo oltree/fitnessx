@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Inter:wght@300;400;500;700&family=Montserrat:wght@300;400&family=Poppins:wght@400;500;600;700&display=swap');
+
+$blue-light: #92a3fd;
+$blue-lighter: #9dceff;
+$purple: #c58bf2;
+$pink: #eea4ce;
+$black: #1d1617;
+$gray: #7b6f72;
+$gray-light: #ada4a5;
+$gray-lighter: #dddada;
+$white: #fff;
+$off-white: #f7f8f8;
+$red: #f83333;
+$green: #b2ff3d;
+
+$bs-default: 0 10px 22px rgba(149, 173, 254, 0.3);
+
+$bg-blue: linear-gradient(274.42deg, $blue-light 0%, $blue-lighter 124.45%);
+$bg-purple: linear-gradient(274.42deg, $purple 0%, $pink 124.45%);
+$bg-purple-blue: linear-gradient(274.34deg, #cc8fed -83.99%, #9dceff 142.46%);
+
+$mobile: 480px;
+$tablet: 768px;
+$laptop: 1280px;
+
+$default-font: 'Poppins', sans-serif;
+
+$bold: 700;
+$semi-bold: 600;
+$medium: 500;
+$regular: 400;
