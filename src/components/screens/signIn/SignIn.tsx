@@ -26,17 +26,20 @@ const SignUp: FC = () => {
 		const { email, password } = data;
 
 		const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
+
 		const userExists = users.find(
 			(user: UserType) => user.email === email && user.password === password
 		);
 
 		if (userExists) {
-			setMessage('Invalid password or email!');
-		} else {
 			setMessage('Login successful!');
 
 			reset();
 			setRedirect(true);
+		} else {
+			setMessage('Invalid password or email!');
+
+			reset();
 		}
 	};
 

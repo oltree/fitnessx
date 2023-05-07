@@ -6,3 +6,4 @@ declare module '*.svg' {
 }
 
 declare module 'react-big-calendar';
+declare module 'uuid';
