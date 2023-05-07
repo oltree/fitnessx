@@ -1,7 +1,6 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import NotFound from '@/components/screens/not-found/NotFound';
-import SignIn from '@/components/screens/signIn/SignIn';
 
 import { useAuth } from '@/hooks/useAuth';
 
@@ -10,7 +9,6 @@ import { RoutePaths } from '@/types/routePaths';
 import { routes } from './routes';
 
 const Router = () => {
-	const navigate = useNavigate();
 	const { isAuth } = useAuth();
 
 	return (

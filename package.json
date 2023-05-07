@@ -1,5 +1,6 @@
 {
 	"name": "workout",
+	"homepage": "https://oltree.github.io/fitnessx",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -30,6 +31,8 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
 		"dev": "craco start",
 		"build": "craco build",
 		"test": "craco test",
@@ -56,6 +59,7 @@
 	"devDependencies": {
 		"@trivago/prettier-plugin-sort-imports": "^4.1.1",
 		"@types/uuid": "^9.0.1",
+		"gh-pages": "^5.0.0",
 		"prettier": "^2.8.8",
 		"sass": "^1.62.1"
 	}
