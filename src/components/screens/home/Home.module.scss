@@ -1,0 +1,6 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.home {
+	@include center(flex, flex-start, space-between);
+}

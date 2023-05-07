@@ -4,5 +4,6 @@ export enum RoutePaths {
 	SIGN_UP = '/signup',
 	SIGN_IN = '/signin',
 	NOTIFICATIONS = '/notifications',
-	PROFILE = '/profile'
+	PROFILE = '/profile',
+	NOTFOUND = '*'
 }

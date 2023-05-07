@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { RoutePaths } from '../../../types/routes';
+import { RoutePaths } from '../../../types/routePaths';
 import { UserType } from '../../../types/user';
 
 import styles from './SignUp.module.scss';

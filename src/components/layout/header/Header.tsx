@@ -5,19 +5,25 @@ import IconButton from '@/components/common/iconButton/IconButton';
 
 import { useAuth } from '@/hooks/useAuth';
 
-import { RoutePaths } from '@/types/routes';
+import { RoutePaths } from '@/types/routePaths';
 import { UserType } from '@/types/user';
 
 import styles from './Header.module.scss';
 
 import HeaderProfile from './headerProfile/HeaderProfile';
 import left from '@/assets/icons/left.svg';
+import { routes } from '@/routes/routes';
 
-const Header: FC = () => {
+interface HeaderProps {
+	backLink?: string;
+}
+
+const Header: FC<HeaderProps> = ({ backLink = '' }) => {
 	const { isAuth } = useAuth();
-	const location = useLocation();
-	const isBack = location.pathname !== RoutePaths.HOME;
-	const pageTitle = location.pathname.split('/')[1];
+	const { pathname } = useLocation();
+	const isBack = pathname !== RoutePaths.HOME;
+	const pageTitle = pathname.split('/')[1];
+	const isNotFound = routes.find(route => route.path === pathname);
 
 	const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
 	const userName = `${users[0]?.firstName} ${users[0]?.lastName}`;
@@ -26,7 +32,7 @@ const Header: FC = () => {
 		<header className={styles.header}>
 			{isBack ? (
 				<IconButton
-					link={RoutePaths.HOME}
+					link={backLink}
 					icon={left}
 					text='go back'
 					className={styles.buttonBack}
@@ -37,7 +43,7 @@ const Header: FC = () => {
 					<p className={styles.user}>{userName}</p>
 				</div>
 			)}
-			<p className={styles.pageTitle}>{pageTitle}</p>
+			{isNotFound && <p className={styles.pageTitle}>{pageTitle}</p>}
 			<HeaderProfile />
 		</header>
 	);

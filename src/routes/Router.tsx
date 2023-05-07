@@ -1,23 +1,34 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
-import Home from '@/components/screens/home/Home';
-import Notifications from '@/components/screens/notifications/Notifications';
-import Profile from '@/components/screens/profile/Profile';
+import NotFound from '@/components/screens/not-found/NotFound';
 import SignIn from '@/components/screens/signIn/SignIn';
-import SignUp from '@/components/screens/signUp/SignUp';
-import Welcome from '@/components/screens/welcome/Welcome';
 
-import { RoutePaths } from '../types/routes';
+import { useAuth } from '@/hooks/useAuth';
+
+import { RoutePaths } from '@/types/routePaths';
+
+import { routes } from './routes';
 
 const Router = () => {
+	const navigate = useNavigate();
+	const { isAuth } = useAuth();
+
 	return (
 		<Routes>
-			<Route path={RoutePaths.WELCOME} element={<Welcome />} />
-			<Route path={RoutePaths.SIGN_UP} element={<SignUp />} />
-			<Route path={RoutePaths.SIGN_IN} element={<SignIn />} />
-			<Route path={RoutePaths.HOME} element={<Home />} />
-			<Route path={RoutePaths.NOTIFICATIONS} element={<Notifications />} />
-			<Route path={RoutePaths.PROFILE} element={<Profile />} />
+			{routes.map(route => {
+				if (route.isAuth && !isAuth) {
+					return false;
+				}
+
+				return (
+					<Route
+						key={route.path}
+						path={route.path}
+						element={<route.component />}
+					/>
+				);
+			})}
+			<Route path={RoutePaths.NOTFOUND} element={<NotFound />} />
 		</Routes>
 	);
 };

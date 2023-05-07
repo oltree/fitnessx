@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 
 import { EventType } from '@/types/event';
 
-const Home = () => {
+const Calendar = () => {
 	const [events, setEvents] = useState<EventType[]>([]);
 
 	const handleDateSelect = (selectInfo: any) => {
@@ -53,13 +53,13 @@ const Home = () => {
 	}, [events]);
 
 	return (
-		<div style={{ height: '80vh' }}>
+		<div style={{ height: '600px', width: '800px' }}>
 			<FullCalendar
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
 					left: 'prev,next today',
 					center: 'title',
-					right: 'dayGridMonth,timeGridWeek'
+					right: 'dayGridMonth'
 				}}
 				initialView='dayGridMonth'
 				editable={true}
@@ -76,4 +76,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Calendar;

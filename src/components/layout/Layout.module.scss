@@ -1,5 +1,7 @@
+@import 'src/assets/styles/variables';
+
 .wrapper {
-	max-width: 1280px;
+	max-width: $laptop;
 	margin: 0 auto;
 	padding: 0 15px;
 }

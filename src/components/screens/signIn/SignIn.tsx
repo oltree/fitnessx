@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { RoutePaths } from '../../../types/routes';
+import { RoutePaths } from '../../../types/routePaths';
 import { UserType } from '../../../types/user';
 
 import styles from './SignIn.module.scss';
@@ -11,7 +11,7 @@ import styles from './SignIn.module.scss';
 import Button from '../../common/button/Button';
 import Input from '../../common/input/Input';
 
-const SignUp: FC = () => {
+const SignIn: FC = () => {
 	const [message, setMessage] = useState('');
 	const [redirect, setRedirect] = useState(false);
 	const {
@@ -90,4 +90,4 @@ const SignUp: FC = () => {
 	);
 };
 
-export default SignUp;
+export default SignIn;

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
-import { RoutePaths } from '@/types/routes';
+import { RoutePaths } from '@/types/routePaths';
 
 import styles from './HeaderProfile.module.scss';
 
@@ -12,8 +12,8 @@ import notifications from '@/assets/icons/notifications.svg';
 import profile from '@/assets/icons/profile.svg';
 
 const HeaderProfile: FC = () => {
-	const location = useLocation();
-	const isProfile = location.pathname === RoutePaths.PROFILE;
+	const { pathname } = useLocation();
+	const isProfile = pathname === RoutePaths.PROFILE;
 
 	return (
 		<div className={styles.profile}>
