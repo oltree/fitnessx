@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 import { RoutePaths } from '../../../types/routePaths';
-import { UserType } from '../../../types/user';
+import { AuthUserType } from '../../../types/user';
 
 import styles from './SignUp.module.scss';
 
@@ -19,15 +19,17 @@ const SignUp: FC = () => {
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm<UserType>();
+	} = useForm<AuthUserType>();
 	const navigate = useNavigate();
 
-	const handleRegister = (data: UserType) => {
+	const handleRegister = (data: AuthUserType) => {
 		const { firstName, lastName, email, password } = data;
-		const newUser: UserType = { firstName, lastName, email, password };
+		const newUser: AuthUserType = { firstName, lastName, email, password };
 
-		const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
-		const userExists = users.find((user: UserType) => user.email === email);
+		const users: AuthUserType[] = JSON.parse(
+			localStorage.getItem('users') || '[]'
+		);
+		const userExists = users.find((user: AuthUserType) => user.email === email);
 
 		if (userExists) {
 			setMessage('User with this email already exists!');

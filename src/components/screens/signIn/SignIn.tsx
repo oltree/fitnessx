@@ -3,39 +3,48 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { RoutePaths } from '../../../types/routePaths';
-import { UserType } from '../../../types/user';
+import Button from '@/components/common/button/Button';
+import Input from '@/components/common/input/Input';
+
+import { useAppDispatch } from '@/hooks/hooks';
+
+import { setUserFromLocalStorage } from '@/store/slices/authSlice';
+
+import { RoutePaths } from '@/types/routePaths';
+import { AuthUserType } from '@/types/user';
 
 import styles from './SignIn.module.scss';
 
-import Button from '../../common/button/Button';
-import Input from '../../common/input/Input';
-
 const SignIn: FC = () => {
+	const dispatch = useAppDispatch();
 	const [message, setMessage] = useState('');
 	const [redirect, setRedirect] = useState(false);
+	const [users, setUsers] = useState<AuthUserType[]>([]);
 	const {
 		register,
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm<UserType>();
+	} = useForm<AuthUserType>();
 	const navigate = useNavigate();
 
-	const handleLogin = (data: UserType) => {
+	useEffect(() => {
+		const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+		setUsers(storedUsers);
+	}, []);
+
+	const handleLogin = (data: AuthUserType) => {
 		const { email, password } = data;
-
-		const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
-
 		const userExists = users.find(
-			(user: UserType) => user.email === email && user.password === password
+			(user: AuthUserType) => user.email === email && user.password === password
 		);
 
 		if (userExists) {
+			dispatch(setUserFromLocalStorage(users[0]));
 			setMessage('Login successful!');
+			setRedirect(true);
 
 			reset();
-			setRedirect(true);
 		} else {
 			setMessage('Invalid password or email!');
 

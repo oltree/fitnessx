@@ -1,9 +1,11 @@
-import { FC } from 'react';
-import { useLocation } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
-import { useAuth } from '@/hooks/useAuth';
+import { useAppSelector } from '@/hooks/hooks';
+
+import { authSelector } from '@/store/selectors/authSelector';
 
 import { RoutePaths } from '@/types/routePaths';
 import { UserType } from '@/types/user';
@@ -19,14 +21,22 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ backLink = '' }) => {
-	const { isAuth } = useAuth();
 	const { pathname } = useLocation();
 	const isBack = pathname !== RoutePaths.HOME;
 	const pageTitle = pathname.split('/')[1];
 	const isNotFound = routes.find(route => route.path === pathname);
 
-	const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
-	const userName = `${users[0]?.firstName} ${users[0]?.lastName}`;
+	const user: UserType = useAppSelector(authSelector);
+	const userName = `${user.firstName} ${user.lastName}`;
+	console.log(user);
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!user.isAuth) {
+			navigate(RoutePaths.WELCOME);
+		}
+	}, []);
 
 	return (
 		<header className={styles.header}>
