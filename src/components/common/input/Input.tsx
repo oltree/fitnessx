@@ -4,7 +4,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 import styles from './Input.module.scss';
 
-type FieldType = 'name' | 'password' | 'email';
+type FieldType = 'firstName' | 'lastName' | 'password' | 'email';
 
 type InputProps = {
 	type: string;

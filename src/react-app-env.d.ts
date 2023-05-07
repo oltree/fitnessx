@@ -5,5 +5,4 @@ declare module '*.svg' {
 	export default content;
 }
 
-declare module 'react-big-calendar';
 declare module 'uuid';

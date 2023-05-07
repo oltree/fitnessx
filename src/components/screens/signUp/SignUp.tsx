@@ -3,11 +3,11 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
+import { RoutePaths } from '../../../types/routes';
 import { UserType } from '../../../types/user';
 
 import styles from './SignUp.module.scss';
 
-import { RoutePaths } from '../../../routes/types';
 import Button from '../../common/button/Button';
 import Input from '../../common/input/Input';
 
@@ -23,8 +23,8 @@ const SignUp: FC = () => {
 	const navigate = useNavigate();
 
 	const handleRegister = (data: UserType) => {
-		const { name, email, password } = data;
-		const newUser: UserType = { name, email, password };
+		const { firstName, lastName, email, password } = data;
+		const newUser: UserType = { firstName, lastName, email, password };
 
 		const users: UserType[] = JSON.parse(localStorage.getItem('users') || '[]');
 		const userExists = users.find((user: UserType) => user.email === email);
@@ -59,9 +59,16 @@ const SignUp: FC = () => {
 			<form onSubmit={handleSubmit(handleRegister)} className={styles.form}>
 				<Input
 					type='text'
-					register={register('name', { required: true })}
-					error={errors.name?.message}
+					register={register('firstName', { required: true })}
+					error={errors.firstName?.message}
 					placeholder='First name'
+				/>
+
+				<Input
+					type='text'
+					register={register('lastName', { required: true })}
+					error={errors.lastName?.message}
+					placeholder='Last name'
 				/>
 
 				<Input

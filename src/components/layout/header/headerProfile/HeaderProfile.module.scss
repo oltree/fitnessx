@@ -1,0 +1,24 @@
+@import 'src/assets/styles/mixins';
+@import 'src/assets/styles/variables';
+
+.profile {
+	@include center();
+	gap: 20px;
+
+	.button {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+@media (max-width: $tablet) {
+	.profile {
+		@include center();
+		gap: 15px;
+
+		.button {
+			width: 36px;
+			height: 36px;
+		}
+	}
+}

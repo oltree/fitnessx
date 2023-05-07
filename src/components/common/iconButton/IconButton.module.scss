@@ -1,0 +1,13 @@
+@import 'src/assets/styles/mixins';
+@import 'src/assets/styles/variables';
+
+.button {
+	@include center();
+	background: $off-white;
+	box-shadow: $bs-default;
+	border-radius: 8px;
+
+	&:hover {
+		background: $gray-lighter;
+	}
+}

@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import Router from 'routes/Router';
 
 import Layout from './components/layout/Layout';
+
+import Router from '@/routes/Router';
 
 const App: FC = () => {
 	return (

@@ -5,10 +5,10 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 
-import { Event } from '../../../types/event';
+import { EventType } from '@/types/event';
 
 const Home = () => {
-	const [events, setEvents] = useState<Event[]>([]);
+	const [events, setEvents] = useState<EventType[]>([]);
 
 	const handleDateSelect = (selectInfo: any) => {
 		let title = prompt('Please enter a new title for your event');
