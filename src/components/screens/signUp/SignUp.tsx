@@ -3,13 +3,13 @@ import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-import { RoutePaths } from '../../../types/routePaths';
-import { AuthUserType } from '../../../types/user';
+import Button from '@/components/common/button/Button';
+import Input from '@/components/common/input/Input';
+
+import { RoutePaths } from '@/types/routePaths';
+import { AuthUserType } from '@/types/user';
 
 import styles from './SignUp.module.scss';
-
-import Button from '../../common/button/Button';
-import Input from '../../common/input/Input';
 
 const SignUp: FC = () => {
 	const [message, setMessage] = useState('');

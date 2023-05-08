@@ -3,16 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 import Button from '@/components/common/button/Button';
 
-import { useAppSelector } from '@/hooks/hooks';
-
-import { authSelector } from '@/store/selectors/authSelector';
+import { useAuth } from '@/hooks/useAuth';
 
 import { RoutePaths } from '@/types/routePaths';
 
 import styles from './Welcome.module.scss';
 
 const Welcome: FC = () => {
-	const { isAuth } = useAppSelector(authSelector);
+	const isAuth = useAuth();
 	const linkTo = isAuth ? RoutePaths.HOME : RoutePaths.SIGN_IN;
 
 	return (

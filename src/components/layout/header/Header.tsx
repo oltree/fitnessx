@@ -14,7 +14,6 @@ import styles from './Header.module.scss';
 
 import HeaderProfile from './headerProfile/HeaderProfile';
 import left from '@/assets/icons/left.svg';
-import { routes } from '@/routes/routes';
 
 interface HeaderProps {
 	backLink?: string;
@@ -24,7 +23,6 @@ const Header: FC<HeaderProps> = ({ backLink = '' }) => {
 	const { pathname } = useLocation();
 	const isBack = pathname !== RoutePaths.HOME;
 	const pageTitle = pathname.split('/')[1];
-	const isNotFound = routes.find(route => route.path === pathname);
 
 	const user: UserType = useAppSelector(authSelector);
 	const userName = `${user.firstName} ${user.lastName}`;
@@ -44,7 +42,7 @@ const Header: FC<HeaderProps> = ({ backLink = '' }) => {
 					<p className={styles.user}>{userName}</p>
 				</div>
 			)}
-			{isNotFound && <p className={styles.pageTitle}>{pageTitle}</p>}
+			<p className={styles.pageTitle}>{pageTitle}</p>
 			<HeaderProfile />
 		</header>
 	);

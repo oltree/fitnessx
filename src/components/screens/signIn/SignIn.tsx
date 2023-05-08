@@ -90,7 +90,7 @@ const SignIn: FC = () => {
 				</p>
 			)}
 			<div className={styles.linkContainer}>
-				<p>Don’t have an account yet?</p>
+				<p>Don't have an account yet?</p>
 				<NavLink to={RoutePaths.SIGN_UP} className={styles.link}>
 					Register
 				</NavLink>

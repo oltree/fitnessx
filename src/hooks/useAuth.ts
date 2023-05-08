@@ -1,5 +1,9 @@
+import { authSelector } from '@/store/selectors/authSelector';
+
+import { useAppSelector } from './hooks';
+
 export const useAuth = () => {
-	return {
-		isAuth: true
-	};
+	const { isAuth } = useAppSelector(authSelector);
+
+	return isAuth;
 };

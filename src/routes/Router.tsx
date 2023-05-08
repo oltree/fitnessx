@@ -2,16 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 
 import NotFound from '@/components/screens/not-found/NotFound';
 
-import { useAppSelector } from '@/hooks/hooks';
-
-import { authSelector } from '@/store/selectors/authSelector';
+import { useAuth } from '@/hooks/useAuth';
 
 import { RoutePaths } from '@/types/routePaths';
 
 import { routes } from './routes';
 
 const Router = () => {
-	const { isAuth } = useAppSelector(authSelector);
+	const isAuth = useAuth();
 
 	return (
 		<Routes>
