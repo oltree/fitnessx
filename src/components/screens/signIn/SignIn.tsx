@@ -56,7 +56,7 @@ const SignIn: FC = () => {
 		if (redirect) {
 			const timeout = setTimeout(() => {
 				navigate(RoutePaths.HOME);
-			}, 2000);
+			}, 1000);
 
 			return () => clearTimeout(timeout);
 		}

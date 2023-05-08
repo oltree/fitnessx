@@ -1,5 +1,5 @@
-import { FC, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
@@ -28,15 +28,6 @@ const Header: FC<HeaderProps> = ({ backLink = '' }) => {
 
 	const user: UserType = useAppSelector(authSelector);
 	const userName = `${user.firstName} ${user.lastName}`;
-	console.log(user);
-
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (!user.isAuth) {
-			navigate(RoutePaths.WELCOME);
-		}
-	}, []);
 
 	return (
 		<header className={styles.header}>

@@ -1,11 +1,20 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import Button from '@/components/common/button/Button';
+
+import { useAppSelector } from '@/hooks/hooks';
+
+import { authSelector } from '@/store/selectors/authSelector';
+
+import { RoutePaths } from '@/types/routePaths';
+
 import styles from './Welcome.module.scss';
 
-import Button from '../../common/button/Button';
-
 const Welcome: FC = () => {
+	const { isAuth } = useAppSelector(authSelector);
+	const linkTo = isAuth ? RoutePaths.HOME : RoutePaths.SIGN_IN;
+
 	return (
 		<div className={styles.welcome}>
 			<p className={styles.title}>
@@ -13,7 +22,7 @@ const Welcome: FC = () => {
 			</p>
 			<p className={styles.subtitle}>Everybody Can Train</p>
 			<div className={styles.button}>
-				<NavLink to='/signup'>
+				<NavLink to={linkTo}>
 					<Button>Get Started</Button>
 				</NavLink>
 			</div>

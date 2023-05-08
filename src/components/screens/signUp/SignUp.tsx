@@ -48,7 +48,7 @@ const SignUp: FC = () => {
 		if (redirect) {
 			const timeout = setTimeout(() => {
 				navigate(RoutePaths.SIGN_IN);
-			}, 2000);
+			}, 1000);
 
 			return () => clearTimeout(timeout);
 		}
