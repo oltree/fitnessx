@@ -27,9 +27,8 @@ const Input: FC<InputProps> = ({
 				type={type}
 				{...register}
 				placeholder={placeholder}
-				className={styles.input}
+				className={cn(styles.input, error && styles.input__error)}
 			/>
-			{error && <span className={styles.error}>{error}</span>}
 		</div>
 	);
 };

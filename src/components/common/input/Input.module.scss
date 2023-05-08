@@ -12,9 +12,9 @@
 			color: $gray-light;
 			font-size: 12px;
 		}
-	}
 
-	.error {
-		color: $red;
+		&__error {
+			border: 1px $red solid;
+		}
 	}
 }

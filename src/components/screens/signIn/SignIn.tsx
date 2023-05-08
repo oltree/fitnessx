@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import Button from '@/components/common/button/Button';
 import Input from '@/components/common/input/Input';
+import Loader from '@/components/common/loader/Loader';
 
 import { useAppDispatch } from '@/hooks/hooks';
 
@@ -19,13 +20,14 @@ const SignIn: FC = () => {
 	const dispatch = useAppDispatch();
 	const [message, setMessage] = useState('');
 	const [redirect, setRedirect] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [users, setUsers] = useState<AuthUserType[]>([]);
 	const {
 		register,
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm<AuthUserType>();
+	} = useForm<AuthUserType>({ mode: 'onChange' });
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -42,6 +44,7 @@ const SignIn: FC = () => {
 		if (userExists) {
 			dispatch(setUserFromLocalStorage(users[0]));
 			setMessage('Login successful!');
+			setIsLoading(true);
 			setRedirect(true);
 
 			reset();
@@ -56,11 +59,16 @@ const SignIn: FC = () => {
 		if (redirect) {
 			const timeout = setTimeout(() => {
 				navigate(RoutePaths.HOME);
+				setIsLoading(false);
 			}, 1000);
 
 			return () => clearTimeout(timeout);
 		}
 	}, [redirect, navigate]);
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<div className={styles.signIn}>
@@ -69,14 +77,14 @@ const SignIn: FC = () => {
 			<form onSubmit={handleSubmit(handleLogin)} className={styles.form}>
 				<Input
 					type='email'
-					register={register('email', { required: true })}
+					register={register('email', { required: 'Email is required!' })}
 					error={errors.email?.message}
 					placeholder='Email'
 				/>
 
 				<Input
 					type='password'
-					register={register('password', { required: true })}
+					register={register('password', { required: 'Password is required!' })}
 					error={errors.password?.message}
 					placeholder='Password'
 					className={styles.lastInput}

@@ -12,15 +12,16 @@ import { AuthUserType } from '@/types/user';
 import styles from './SignUp.module.scss';
 
 const SignUp: FC = () => {
+	const navigate = useNavigate();
 	const [message, setMessage] = useState('');
 	const [redirect, setRedirect] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const {
 		register,
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm<AuthUserType>();
-	const navigate = useNavigate();
+	} = useForm<AuthUserType>({ mode: 'onChange' });
 
 	const handleRegister = (data: AuthUserType) => {
 		const { firstName, lastName, email, password } = data;
@@ -39,8 +40,10 @@ const SignUp: FC = () => {
 			const updatedUsers = [...users, newUser];
 			localStorage.setItem('users', JSON.stringify(updatedUsers));
 
-			reset();
+			setIsLoading(true);
 			setRedirect(true);
+
+			reset();
 		}
 	};
 
@@ -48,6 +51,7 @@ const SignUp: FC = () => {
 		if (redirect) {
 			const timeout = setTimeout(() => {
 				navigate(RoutePaths.SIGN_IN);
+				setIsLoading(false);
 			}, 1000);
 
 			return () => clearTimeout(timeout);
@@ -61,28 +65,32 @@ const SignUp: FC = () => {
 			<form onSubmit={handleSubmit(handleRegister)} className={styles.form}>
 				<Input
 					type='text'
-					register={register('firstName', { required: true })}
+					register={register('firstName', {
+						required: 'First name is required!'
+					})}
 					error={errors.firstName?.message}
 					placeholder='First name'
 				/>
 
 				<Input
 					type='text'
-					register={register('lastName', { required: true })}
+					register={register('lastName', {
+						required: 'Last name is required!'
+					})}
 					error={errors.lastName?.message}
 					placeholder='Last name'
 				/>
 
 				<Input
 					type='email'
-					register={register('email', { required: true })}
+					register={register('email', { required: 'Email is required!' })}
 					error={errors.email?.message}
 					placeholder='Email'
 				/>
 
 				<Input
 					type='password'
-					register={register('password', { required: true })}
+					register={register('password', { required: 'Password is required!' })}
 					error={errors.password?.message}
 					placeholder='Password'
 					className={styles.lastInput}

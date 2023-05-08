@@ -15,11 +15,7 @@ import styles from './Header.module.scss';
 import HeaderProfile from './headerProfile/HeaderProfile';
 import left from '@/assets/icons/left.svg';
 
-interface HeaderProps {
-	backLink?: string;
-}
-
-const Header: FC<HeaderProps> = ({ backLink = '' }) => {
+const Header: FC = () => {
 	const { pathname } = useLocation();
 	const isBack = pathname !== RoutePaths.HOME;
 	const pageTitle = pathname.split('/')[1];
@@ -31,7 +27,7 @@ const Header: FC<HeaderProps> = ({ backLink = '' }) => {
 		<header className={styles.header}>
 			{isBack ? (
 				<IconButton
-					link={backLink}
+					link={RoutePaths.HOME}
 					icon={left}
 					text='go back'
 					className={styles.buttonBack}
