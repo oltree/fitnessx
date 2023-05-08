@@ -1,4 +1,4 @@
-import { RoutePaths } from '@/types/routePaths';
+import { RoutePaths } from '@/types/route.type';
 
 export const showHeader = (pathname: string, isAuth: boolean) => {
 	const allowedRoutes = [

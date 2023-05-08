@@ -1,72 +1,25 @@
 import cn from 'classnames';
-import { FC, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Button from '@/components/common/button/Button';
 import Input from '@/components/common/input/Input';
 import Loader from '@/components/common/loader/Loader';
 
-import { useAppDispatch } from '@/hooks/hooks';
+import { useRedirect } from '@/hooks/useRedirect';
 
-import { setUserFromLocalStorage } from '@/store/slices/authSlice';
-
-import { RoutePaths } from '@/types/routePaths';
-import { AuthUserType } from '@/types/user';
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './SignIn.module.scss';
 
+import { useSignIn } from './useSignIn';
+
 const SignIn: FC = () => {
-	const dispatch = useAppDispatch();
-	const [message, setMessage] = useState('');
-	const [redirect, setRedirect] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [users, setUsers] = useState<AuthUserType[]>([]);
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors }
-	} = useForm<AuthUserType>({ mode: 'onChange' });
-	const navigate = useNavigate();
+	const { message, redirect, errors, register, onSubmit } = useSignIn();
 
-	useEffect(() => {
-		const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-		setUsers(storedUsers);
-	}, []);
+	useRedirect(redirect, RoutePaths.HOME, 1000);
 
-	const handleLogin = (data: AuthUserType) => {
-		const { email, password } = data;
-		const userExists = users.find(
-			(user: AuthUserType) => user.email === email && user.password === password
-		);
-
-		if (userExists) {
-			dispatch(setUserFromLocalStorage(users[0]));
-			setMessage('Login successful!');
-			setIsLoading(true);
-			setRedirect(true);
-
-			reset();
-		} else {
-			setMessage('Invalid password or email!');
-
-			reset();
-		}
-	};
-
-	useEffect(() => {
-		if (redirect) {
-			const timeout = setTimeout(() => {
-				navigate(RoutePaths.HOME);
-				setIsLoading(false);
-			}, 1000);
-
-			return () => clearTimeout(timeout);
-		}
-	}, [redirect, navigate]);
-
-	if (isLoading) {
+	if (redirect) {
 		return <Loader />;
 	}
 
@@ -74,7 +27,7 @@ const SignIn: FC = () => {
 		<div className={styles.signIn}>
 			<p className={styles.subtitle}>Hey there,</p>
 			<p className={styles.title}>Welcome Back</p>
-			<form onSubmit={handleSubmit(handleLogin)} className={styles.form}>
+			<form onSubmit={onSubmit} className={styles.form}>
 				<Input
 					type='email'
 					register={register('email', { required: 'Email is required!' })}

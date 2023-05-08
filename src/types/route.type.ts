@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 export enum RoutePaths {
 	HOME = '/home',
 	WELCOME = '/',
@@ -7,3 +9,9 @@ export enum RoutePaths {
 	PROFILE = '/profile',
 	NOTFOUND = '*'
 }
+
+export type RouteType = {
+	path: string;
+	component: FC;
+	isAuth: boolean;
+};

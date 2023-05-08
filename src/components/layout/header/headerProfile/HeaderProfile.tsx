@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
-import { RoutePaths } from '@/types/routePaths';
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './HeaderProfile.module.scss';
 

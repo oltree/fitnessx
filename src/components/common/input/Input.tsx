@@ -26,6 +26,7 @@ const Input: FC<InputProps> = ({
 			<input
 				type={type}
 				{...register}
+				autoComplete='on'
 				placeholder={placeholder}
 				className={cn(styles.input, error && styles.input__error)}
 			/>

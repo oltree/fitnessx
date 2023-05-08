@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Home from '@/components/screens/home/Home';
 import Notifications from '@/components/screens/notifications/Notifications';
 import Profile from '@/components/screens/profile/Profile';
@@ -7,13 +5,7 @@ import SignIn from '@/components/screens/signIn/SignIn';
 import SignUp from '@/components/screens/signUp/SignUp';
 import Welcome from '@/components/screens/welcome/Welcome';
 
-import { RoutePaths } from '@/types/routePaths';
-
-type RouteType = {
-	path: string;
-	component: FC;
-	isAuth: boolean;
-};
+import { RoutePaths, RouteType } from '@/types/route.type';
 
 export const routes: RouteType[] = [
 	{

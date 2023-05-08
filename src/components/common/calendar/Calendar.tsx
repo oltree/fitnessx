@@ -5,7 +5,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 
-import { EventType } from '@/types/event';
+import { EventType } from '@/types/event.type';
 
 const Calendar = () => {
 	const [events, setEvents] = useState<EventType[]>([]);

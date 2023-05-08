@@ -4,7 +4,7 @@ import NotFound from '@/components/screens/not-found/NotFound';
 
 import { useAuth } from '@/hooks/useAuth';
 
-import { RoutePaths } from '@/types/routePaths';
+import { RoutePaths } from '@/types/route.type';
 
 import { routes } from './routes';
 

@@ -5,7 +5,7 @@ import Button from '@/components/common/button/Button';
 
 import { useAuth } from '@/hooks/useAuth';
 
-import { RoutePaths } from '@/types/routePaths';
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './Welcome.module.scss';
 

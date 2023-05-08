@@ -1,68 +1,33 @@
 import cn from 'classnames';
-import { FC, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Button from '@/components/common/button/Button';
 import Input from '@/components/common/input/Input';
+import Loader from '@/components/common/loader/Loader';
 
-import { RoutePaths } from '@/types/routePaths';
-import { AuthUserType } from '@/types/user';
+import { useRedirect } from '@/hooks/useRedirect';
+
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './SignUp.module.scss';
 
+import { useSignUp } from './useSignUp';
+
 const SignUp: FC = () => {
-	const navigate = useNavigate();
-	const [message, setMessage] = useState('');
-	const [redirect, setRedirect] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors }
-	} = useForm<AuthUserType>({ mode: 'onChange' });
+	const { message, redirect, errors, register, onSubmit } = useSignUp();
 
-	const handleRegister = (data: AuthUserType) => {
-		const { firstName, lastName, email, password } = data;
-		const newUser: AuthUserType = { firstName, lastName, email, password };
+	useRedirect(redirect, RoutePaths.SIGN_IN, 1000);
 
-		const users: AuthUserType[] = JSON.parse(
-			localStorage.getItem('users') || '[]'
-		);
-		const userExists = users.find((user: AuthUserType) => user.email === email);
-
-		if (userExists) {
-			setMessage('User with this email already exists!');
-		} else {
-			setMessage('Registration completed successfully!');
-
-			const updatedUsers = [...users, newUser];
-			localStorage.setItem('users', JSON.stringify(updatedUsers));
-
-			setIsLoading(true);
-			setRedirect(true);
-
-			reset();
-		}
-	};
-
-	useEffect(() => {
-		if (redirect) {
-			const timeout = setTimeout(() => {
-				navigate(RoutePaths.SIGN_IN);
-				setIsLoading(false);
-			}, 1000);
-
-			return () => clearTimeout(timeout);
-		}
-	}, [redirect, navigate]);
+	if (redirect) {
+		return <Loader />;
+	}
 
 	return (
 		<div className={styles.signUp}>
 			<p className={styles.subtitle}>Hey there,</p>
 			<p className={styles.title}>Create an Account</p>
-			<form onSubmit={handleSubmit(handleRegister)} className={styles.form}>
+			<form onSubmit={onSubmit} className={styles.form}>
 				<Input
 					type='text'
 					register={register('firstName', {
@@ -98,17 +63,18 @@ const SignUp: FC = () => {
 
 				<Button className={styles.button}>Register</Button>
 			</form>
-			{message && (
-				<p className={cn(styles.message, redirect && styles.message__success)}>
-					{message}
-				</p>
-			)}
 			<div className={styles.linkContainer}>
 				<p>Already have an account?</p>
 				<NavLink to={RoutePaths.SIGN_IN} className={styles.link}>
 					Login
 				</NavLink>
 			</div>
+
+			{message && (
+				<p className={cn(styles.message, redirect && styles.message__success)}>
+					{message}
+				</p>
+			)}
 		</div>
 	);
 };

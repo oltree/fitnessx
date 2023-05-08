@@ -3,25 +3,29 @@ import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
-import { useAppSelector } from '@/hooks/hooks';
+import { useAuth } from '@/hooks/useAuth';
+import { useUser } from '@/hooks/useUser';
 
-import { authSelector } from '@/store/selectors/authSelector';
-
-import { RoutePaths } from '@/types/routePaths';
-import { UserType } from '@/types/user';
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './Header.module.scss';
 
 import HeaderProfile from './headerProfile/HeaderProfile';
 import left from '@/assets/icons/left.svg';
+import { showHeader } from '@/utils/helpers/showHeader';
 
 const Header: FC = () => {
+	const isAuth = useAuth();
 	const { pathname } = useLocation();
 	const isBack = pathname !== RoutePaths.HOME;
 	const pageTitle = pathname.split('/')[1];
 
-	const user: UserType = useAppSelector(authSelector);
-	const userName = `${user.firstName} ${user.lastName}`;
+	const { firstName, lastName } = useUser();
+	const userName = `${firstName} ${lastName}`;
+
+	const isShowHeader = showHeader(pathname, isAuth);
+
+	if (!isShowHeader) return null;
 
 	return (
 		<header className={styles.header}>
@@ -38,7 +42,7 @@ const Header: FC = () => {
 					<p className={styles.user}>{userName}</p>
 				</div>
 			)}
-			<p className={styles.pageTitle}>{pageTitle}</p>
+			<p className={styles.pageTitle}>{isBack && pageTitle}</p>
 			<HeaderProfile />
 		</header>
 	);
