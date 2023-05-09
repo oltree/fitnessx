@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fitnessx/static/css/main.fd5bf638.css",
-    "main.js": "/fitnessx/static/js/main.30d5d084.js",
+    "main.js": "/fitnessx/static/js/main.5da1438c.js",
     "static/media/banner-pie.png": "/fitnessx/static/media/banner-pie.213a2bc635606088b3e9.png",
     "static/media/notifications.svg": "/fitnessx/static/media/notifications.3cecb967d1aad124b072c83268ade075.svg",
     "static/media/loader.svg": "/fitnessx/static/media/loader.09e35ff12696ce7b2d156f679f2e3323.svg",
@@ -10,10 +10,10 @@
     "index.html": "/fitnessx/index.html",
     "static/media/left.svg": "/fitnessx/static/media/left.c793ad4eca23ef3d0e4aa1ba1188c5e9.svg",
     "main.fd5bf638.css.map": "/fitnessx/static/css/main.fd5bf638.css.map",
-    "main.30d5d084.js.map": "/fitnessx/static/js/main.30d5d084.js.map"
+    "main.5da1438c.js.map": "/fitnessx/static/js/main.5da1438c.js.map"
   },
   "entrypoints": [
     "static/css/main.fd5bf638.css",
-    "static/js/main.30d5d084.js"
+    "static/js/main.5da1438c.js"
   ]
 }
