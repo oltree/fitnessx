@@ -1,0 +1,47 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.workoutForm {
+	max-width: 350px;
+	padding: 20px;
+	border: 10px $blue-light solid;
+	border-radius: 30px;
+	box-shadow: $bs-default;
+
+	.form {
+		.timeContainer {
+			margin-bottom: 15px;
+
+			.datepickerInput {
+				width: 100%;
+				color: $gray;
+				font-size: 20px;
+				text-align: center;
+				cursor: pointer;
+			}
+		}
+
+		.workoutContainer {
+		}
+
+		.buttonConatiner {
+			@include center();
+		}
+	}
+
+	.title {
+		margin-bottom: 10px;
+		font-weight: $medium;
+	}
+
+	.input {
+		margin-bottom: 10px;
+		width: 290px;
+	}
+
+	.button {
+		height: 50px;
+		width: 250px;
+		background: $bg-purple;
+	}
+}

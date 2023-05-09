@@ -5,10 +5,12 @@
 	height: 150px;
 	max-width: 350px;
 	padding: 20px;
+	margin-bottom: 40px;
 	@include center();
 	gap: 5px;
 	background: $bg-purple-blue;
-	border-radius: 40px;
+	border-radius: 30px;
+	box-shadow: $bs-default;
 
 	.content {
 		color: $white;

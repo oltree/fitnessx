@@ -7,12 +7,10 @@ interface ButttonProps extends PropsWithChildren {
 	className?: string;
 }
 
-const Button: FC<ButttonProps> = ({ children, className }) => {
-	return (
-		<button type='submit' className={cn(styles.button, className)}>
-			{children}
-		</button>
-	);
-};
+const Button: FC<ButttonProps> = ({ children, className }) => (
+	<button type='submit' className={cn(styles.button, className)}>
+		{children}
+	</button>
+);
 
 export default Button;
