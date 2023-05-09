@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import Layout from './components/layout/Layout';
 
@@ -16,12 +16,12 @@ const root = createRoot(container);
 
 root.render(
 	<StrictMode>
-		<BrowserRouter>
+		<HashRouter>
 			<Provider store={store}>
 				<Layout>
 					<Router />
 				</Layout>
 			</Provider>
-		</BrowserRouter>
+		</HashRouter>
 	</StrictMode>
 );
