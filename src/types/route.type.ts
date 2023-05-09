@@ -7,7 +7,8 @@ export enum RoutePaths {
 	SIGN_IN = '/signin',
 	NOTIFICATIONS = '/notifications',
 	PROFILE = '/profile',
-	NOTFOUND = '*'
+	NOTFOUND = '*',
+	BASENAME = '/fitnessx'
 }
 
 export type RouteType = {
