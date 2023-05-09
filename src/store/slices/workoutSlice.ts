@@ -4,6 +4,7 @@ import { ExerciseType } from '@/types/exercise.type';
 
 interface Workout {
 	id: string;
+	date: Date;
 	name: string;
 	exercises: ExerciseType[];
 }

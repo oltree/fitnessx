@@ -8,12 +8,19 @@ interface IconButtonProps {
 	link: string;
 	icon: string;
 	text: string;
+	onClick?: VoidFunction;
 	className?: string;
 }
 
-const IconButton: FC<IconButtonProps> = ({ link, icon, text, className }) => (
+const IconButton: FC<IconButtonProps> = ({
+	link,
+	icon,
+	text,
+	onClick,
+	className
+}) => (
 	<NavLink to={link}>
-		<button className={cn(styles.button, className)}>
+		<button onClick={onClick} className={cn(styles.button, className)}>
 			<img src={icon} alt={text} />
 		</button>
 	</NavLink>

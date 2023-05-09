@@ -1,7 +1,11 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
+
+import { useAppDispatch } from '@/hooks/hooks';
+
+import { userLogout } from '@/store/slices/userSlice';
 
 import { RoutePaths } from '@/types/route.type';
 
@@ -12,8 +16,11 @@ import notifications from '@/assets/icons/notifications.svg';
 import profile from '@/assets/icons/profile.svg';
 
 const HeaderProfile: FC = () => {
+	const dispatch = useAppDispatch();
 	const { pathname } = useLocation();
 	const isProfile = pathname === RoutePaths.PROFILE;
+
+	const handleLogout = useCallback(() => dispatch(userLogout()), [dispatch]);
 
 	return (
 		<div className={styles.profile}>
@@ -34,6 +41,7 @@ const HeaderProfile: FC = () => {
 					link={RoutePaths.SIGN_IN}
 					icon={logout}
 					text='logout'
+					onClick={handleLogout}
 					className={styles.button}
 				/>
 			)}

@@ -1,4 +1,4 @@
-import { authSelector } from '@/store/selectors/authSelector';
+import { authSelector } from '@/store/selectors';
 
 import { useAppSelector } from './hooks';
 

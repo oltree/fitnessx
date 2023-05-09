@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import { useAppDispatch } from '@/hooks/hooks';
 
-import { setUserFromLocalStorage } from '@/store/slices/authSlice';
+import { setUserFromLocalStorage } from '@/store/slices/userSlice';
 
 import { AuthUserType } from '@/types/user.type';
 

@@ -21,10 +21,13 @@ const userSlice = createSlice({
 			state.firstName = payload.firstName;
 			state.lastName = payload.lastName;
 			state.isAuth = true;
+		},
+		userLogout: (state: UserType) => {
+			state.isAuth = false;
 		}
 	}
 });
 
-export const { setUserFromLocalStorage } = userSlice.actions;
+export const { setUserFromLocalStorage, userLogout } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -20,7 +20,6 @@ const WorkoutForm: FC = () => {
 	const handleCreateWorkout = (data: any) => {
 		const { name } = data;
 		const newWorkout = { name, startDate };
-		console.log(newWorkout);
 
 		reset();
 	};

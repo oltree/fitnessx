@@ -8,9 +8,7 @@ import { persistReducer } from 'redux-persist';
 import { PERSIST } from 'redux-persist/es/constants';
 import storage from 'redux-persist/lib/storage';
 
-import userSlice from './slices/authSlice';
-import exercisesSlice from './slices/exerciseSlice';
-import workoutsSlice from './slices/workoutSlice';
+import { exercisesSlice, userSlice, workoutsSlice } from './slices';
 
 const persistConfig = {
 	key: 'root',
