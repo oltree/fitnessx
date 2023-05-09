@@ -3,4 +3,5 @@
 
 .home {
 	@include center(flex, flex-start, space-between);
+	gap: 40px;
 }

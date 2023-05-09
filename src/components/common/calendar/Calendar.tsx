@@ -3,7 +3,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import { EventType } from '@/types/event.type';
 
@@ -18,7 +18,7 @@ const Calendar = () => {
 
 		if (title) {
 			calendarApi.addEvent({
-				id: v4(),
+				id: uuid(),
 				title,
 				start: selectInfo.startStr,
 				end: selectInfo.endStr,

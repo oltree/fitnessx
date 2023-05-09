@@ -2,30 +2,24 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { ExerciseType } from '@/types/exercise.type';
 
-export interface ExercisesState {
-	exercises: ExerciseType[];
-}
-
-const initialState: ExercisesState = {
-	exercises: []
-};
+const initialState: ExerciseType[] = [];
 
 export const exersisesSlice = createSlice({
 	name: 'workout',
 	initialState,
 	reducers: {
 		addExercise: (state, { payload }: PayloadAction<ExerciseType>) => {
-			state.exercises.push(payload);
+			state.push(payload);
 		},
 		removeExercise: (state, { payload: id }: PayloadAction<string>) => {
-			state.exercises = state.exercises.filter(exercise => exercise.id !== id);
+			state = state.filter(exercise => exercise.id !== id);
 		},
 		updateExercise: (state, { payload }: PayloadAction<ExerciseType>) => {
-			const foundIndex = state.exercises.findIndex(
+			const foundIndex = state.findIndex(
 				exercise => exercise.id === payload.id
 			);
 			if (foundIndex !== -1) {
-				state.exercises[foundIndex] = payload;
+				state[foundIndex] = payload;
 			}
 		}
 	}
