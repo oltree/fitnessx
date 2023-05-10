@@ -1,51 +1,103 @@
-import { FC } from 'react';
-import 'react-datepicker/dist/react-datepicker.css';
+import { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
+
+import { useAppDispatch } from '@/hooks/hooks';
+
+import { addExercise } from '@/store/slices/exercisesSlice';
+
+import { ExerciseType } from '@/types/exercise.type';
 
 import styles from './ExerciseForm.module.scss';
 
 import Button from '../button/Button';
 import Input from '../input/Input';
+import RadioGroup from '../radioGroup/RadioGroup';
+
+interface ExerciseFormData extends Omit<ExerciseType, 'name' | 'icon'> {
+	exercise: string;
+}
 
 const ExerciseForm: FC = () => {
+	const dispatch = useAppDispatch();
 	const {
 		register,
 		handleSubmit,
 		reset,
 		formState: { errors }
-	} = useForm({ mode: 'onChange' });
+	} = useForm<ExerciseFormData>({ mode: 'onChange' });
 
-	const handleCreateWorkout = (data: any) => {
-		const { name } = data;
-		const newWorkout = { name };
+	const handleCreateExercise = (data: any) => {
+		const { exercise, sets, reps, time, weight } = data;
+		const { name, icon } = JSON.parse(exercise);
+		const newExercise = { id: uuid(), name, sets, reps, time, weight, icon };
+
+		dispatch(addExercise(newExercise));
 
 		reset();
 	};
 
 	return (
-		<div className={styles.workoutForm}>
-			<form
-				onSubmit={handleSubmit(handleCreateWorkout)}
-				className={styles.form}
-			>
-				<div className={styles.workoutContainer}>
-					<p className={styles.title}>Details Workout:</p>
+		<form onSubmit={handleSubmit(handleCreateExercise)} className={styles.form}>
+			<RadioGroup register={register('exercise', { required: true })} />
+
+			<div className={styles.details}>
+				<div className={styles.detail}>
+					<p className={styles.name}>Sets:</p>
 					<Input
 						type='text'
-						register={register('name', {
-							required: 'Workout name is required!'
+						register={register('sets', {
+							required: 'Sets is required!'
 						})}
-						placeholder='Workout name'
+						error={errors.sets?.message}
+						placeholder='0'
 						className={styles.input}
 					/>
 				</div>
 
-				<div className={styles.buttonConatiner}>
-					<Button className={styles.button}>Create Workout</Button>
+				<div className={styles.detail}>
+					<p className={styles.name}>Repetitions:</p>
+					<Input
+						type='text'
+						register={register('reps', {
+							required: 'Repetitions is required!'
+						})}
+						error={errors.reps?.message}
+						placeholder='0'
+						className={styles.input}
+					/>
 				</div>
-			</form>
-		</div>
+
+				<div className={styles.detail}>
+					<p className={styles.name}>Lead time:</p>
+					<Input
+						type='text'
+						register={register('time', {
+							required: 'Lead time is required!'
+						})}
+						error={errors.time?.message}
+						placeholder='0'
+						className={styles.input}
+					/>
+				</div>
+
+				<div className={styles.detail}>
+					<p className={styles.name}>Work weight:</p>
+					<Input
+						type='text'
+						register={register('weight', {
+							required: 'Work weight is required!'
+						})}
+						error={errors.weight?.message}
+						placeholder='0'
+						className={styles.input}
+					/>
+				</div>
+			</div>
+
+			<Button className={styles.button}>Add exercise</Button>
+		</form>
 	);
 };
 
-export default ExerciseForm;
+export default memo(ExerciseForm);

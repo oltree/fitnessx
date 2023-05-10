@@ -3,24 +3,25 @@
 
 .workoutForm {
 	max-width: 350px;
+	height: 600px;
 	padding: 20px;
 	border: 10px $blue-light solid;
 	border-radius: 30px;
 	box-shadow: $bs-default;
 
-	.form {
-		.timeContainer {
-			margin-bottom: 15px;
+	.timeContainer {
+		margin-bottom: 20px;
 
-			.datepickerInput {
-				width: 100%;
-				color: $gray;
-				font-size: 20px;
-				text-align: center;
-				cursor: pointer;
-			}
+		.datepickerInput {
+			width: 100%;
+			color: $gray;
+			font-size: 20px;
+			text-align: center;
+			cursor: pointer;
 		}
+	}
 
+	.form {
 		.workoutContainer {
 		}
 

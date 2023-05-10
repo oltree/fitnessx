@@ -14,6 +14,7 @@ import { Workout } from '@/types/workout.type';
 import styles from './WorkoutForm.module.scss';
 
 import Button from '../button/Button';
+import ExerciseForm from '../exerciseForm/ExerciseForm';
 import Input from '../input/Input';
 
 const WorkoutForm: FC = () => {
@@ -24,6 +25,7 @@ const WorkoutForm: FC = () => {
 
 	const handleCreateWorkout = (data: any) => {
 		const { name } = data;
+
 		const newWorkout: Workout = {
 			id: uuid(),
 			date: startDate,
@@ -35,25 +37,29 @@ const WorkoutForm: FC = () => {
 		reset();
 	};
 
+	const handleDateChange = (date: Date) => setStartDate(date);
+
 	return (
 		<div className={styles.workoutForm}>
+			<div className={styles.timeContainer}>
+				<p className={styles.title}>Time</p>
+				<DatePicker
+					withPortal
+					dateFormat='dd-MM-yyyy'
+					selected={startDate}
+					onChange={handleDateChange}
+					className={styles.datepickerInput}
+				/>
+			</div>
+
+			<ExerciseForm />
+
 			<form
 				onSubmit={handleSubmit(handleCreateWorkout)}
 				className={styles.form}
 			>
-				<div className={styles.timeContainer}>
-					<p className={styles.title}>Time:</p>
-					<DatePicker
-						withPortal
-						dateFormat='dd-MM-yyyy'
-						selected={startDate}
-						onChange={(date: Date) => setStartDate(date)}
-						className={styles.datepickerInput}
-					/>
-				</div>
-
 				<div className={styles.workoutContainer}>
-					<p className={styles.title}>Details Workout:</p>
+					<p className={styles.title}>Details Workout</p>
 					<Input
 						type='text'
 						register={register('name')}
@@ -61,8 +67,6 @@ const WorkoutForm: FC = () => {
 						className={styles.input}
 					/>
 				</div>
-
-				<div>add exercises</div>
 
 				<div className={styles.buttonConatiner}>
 					<Button className={styles.button}>Create Workout</Button>

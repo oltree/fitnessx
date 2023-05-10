@@ -9,6 +9,8 @@ const workoutsSlice = createSlice({
 	initialState,
 	reducers: {
 		addWorkout: (state, { payload }: PayloadAction<Workout>) => {
+			console.log(payload);
+
 			state.push(payload);
 		},
 		deleteWorkout: (state, { payload: id }: PayloadAction<string>) => {

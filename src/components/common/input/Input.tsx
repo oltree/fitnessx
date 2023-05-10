@@ -4,13 +4,11 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 import styles from './Input.module.scss';
 
-type FieldType = 'firstName' | 'lastName' | 'password' | 'email' | 'name';
-
 type InputProps = {
 	type: string;
-	register: UseFormRegisterReturn<FieldType>;
-	placeholder: string;
+	register: UseFormRegisterReturn<string>;
 	error?: string;
+	placeholder?: string;
 	className?: string;
 };
 
