@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fitnessx/static/css/main.cdabd93e.css",
-    "main.js": "/fitnessx/static/js/main.b6552c1d.js",
+    "main.css": "/fitnessx/static/css/main.061c1fdc.css",
+    "main.js": "/fitnessx/static/js/main.26b74fbf.js",
     "static/media/banner-pie.png": "/fitnessx/static/media/banner-pie.213a2bc635606088b3e9.png",
     "static/media/notifications.svg": "/fitnessx/static/media/notifications.3cecb967d1aad124b072c83268ade075.svg",
     "static/media/loader.svg": "/fitnessx/static/media/loader.09e35ff12696ce7b2d156f679f2e3323.svg",
@@ -9,11 +9,11 @@
     "static/media/logout.svg": "/fitnessx/static/media/logout.f0c543a2fb0b9276b0fa08f2abb5fd0e.svg",
     "index.html": "/fitnessx/index.html",
     "static/media/left.svg": "/fitnessx/static/media/left.c793ad4eca23ef3d0e4aa1ba1188c5e9.svg",
-    "main.cdabd93e.css.map": "/fitnessx/static/css/main.cdabd93e.css.map",
-    "main.b6552c1d.js.map": "/fitnessx/static/js/main.b6552c1d.js.map"
+    "main.061c1fdc.css.map": "/fitnessx/static/css/main.061c1fdc.css.map",
+    "main.26b74fbf.js.map": "/fitnessx/static/js/main.26b74fbf.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdabd93e.css",
-    "static/js/main.b6552c1d.js"
+    "static/css/main.061c1fdc.css",
+    "static/js/main.26b74fbf.js"
   ]
 }
