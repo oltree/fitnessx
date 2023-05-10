@@ -1,9 +1,8 @@
-import { FC, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { FC } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
 
-import styles from './Workout.module.scss';
+import styles from './ExerciseForm.module.scss';
 
 import Button from '../button/Button';
 import Input from '../input/Input';

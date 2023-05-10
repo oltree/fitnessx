@@ -11,7 +11,7 @@ import { addWorkout } from '@/store/slices/workoutsSlice';
 
 import { Workout } from '@/types/workout.type';
 
-import styles from './Workout.module.scss';
+import styles from './WorkoutForm.module.scss';
 
 import Button from '../button/Button';
 import Input from '../input/Input';
@@ -61,6 +61,8 @@ const WorkoutForm: FC = () => {
 						className={styles.input}
 					/>
 				</div>
+
+				<div>add exercises</div>
 
 				<div className={styles.buttonConatiner}>
 					<Button className={styles.button}>Create Workout</Button>
