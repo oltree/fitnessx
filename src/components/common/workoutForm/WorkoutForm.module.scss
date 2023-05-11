@@ -3,46 +3,91 @@
 
 .workoutForm {
 	max-width: 350px;
-	height: 600px;
-	padding: 20px;
+	max-height: 600px;
+	padding: 15px 20px;
 	border: 10px $blue-light solid;
 	border-radius: 30px;
 	box-shadow: $bs-default;
 
-	.timeContainer {
-		margin-bottom: 20px;
+	.datepicker {
+		margin-bottom: 10px;
 
 		.datepickerInput {
 			width: 100%;
 			color: $gray;
-			font-size: 20px;
+			font-size: 18px;
 			text-align: center;
 			cursor: pointer;
 		}
 	}
 
 	.form {
-		.workoutContainer {
-		}
+		.buttonContainer {
+			margin-bottom: 10px;
+			@include center(flex, center, space-between);
 
-		.buttonConatiner {
-			@include center();
+			.button {
+				width: 100px;
+				height: 30px;
+				font-size: 14px;
+				font-weight: $regular;
+				background: $bg-purple;
+				border-radius: 10px;
+			}
 		}
 	}
 
 	.title {
-		margin-bottom: 10px;
 		font-weight: $medium;
 	}
 
 	.input {
+		padding: 10px 15px;
 		margin-bottom: 10px;
 		width: 290px;
 	}
 
-	.button {
-		height: 50px;
-		width: 250px;
-		background: $bg-purple;
+	.exercises {
+		max-height: 130px;
+		overflow: auto;
+
+		.exercise {
+			@include center(flex, center, space-between);
+
+			.exerciseName {
+				width: 50px;
+				text-align: center;
+
+				p {
+					margin-bottom: 5px;
+					font-size: 11px;
+				}
+			}
+
+			.line {
+				width: 1px;
+				height: 50px;
+				background: $black;
+			}
+
+			.exerciseDetails {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(2, 1fr);
+
+				.exerciseDetail {
+					@include center(flex, center, space-between);
+					font-size: 11px;
+				}
+			}
+
+			.buttonDelete {
+				padding: 1px 8px;
+				margin-right: 5px;
+				color: $white;
+				background: $red;
+				border-radius: 50%;
+			}
+		}
 	}
 }

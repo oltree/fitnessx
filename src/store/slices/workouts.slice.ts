@@ -9,12 +9,13 @@ const workoutsSlice = createSlice({
 	initialState,
 	reducers: {
 		addWorkout: (state, { payload }: PayloadAction<Workout>) => {
-			console.log(payload);
-
 			state.push(payload);
 		},
 		deleteWorkout: (state, { payload: id }: PayloadAction<string>) => {
-			state = state.filter(workout => workout.id !== id);
+			const foundIndex = state.findIndex(workout => workout.id === id);
+			if (foundIndex !== -1) {
+				state.splice(foundIndex, 1);
+			}
 		},
 		updateWorkout: (state, { payload }: PayloadAction<Workout>) => {
 			const foundIndex = state.findIndex(workout => workout.id === payload.id);

@@ -6,4 +6,5 @@ export type ExerciseType = {
 	time: number;
 	weight: number;
 	icon: string;
+	isCompleted: boolean;
 };

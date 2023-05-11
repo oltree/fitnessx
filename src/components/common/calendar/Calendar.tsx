@@ -2,75 +2,47 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid';
 
-import { EventType } from '@/types/event.type';
+import { useAppSelector } from '@/hooks/hooks';
+
+import { workoutsSelector } from '@/store/selectors';
+
+import styles from './Calendar.module.scss';
+
+import { MONDAY } from '@/utils/constants/days';
 
 const Calendar = () => {
-	const [events, setEvents] = useState<EventType[]>([]);
+	const workouts = useAppSelector(workoutsSelector);
 
-	const handleDateSelect = (selectInfo: any) => {
-		let title = prompt('Please enter a new title for your event');
-		let calendarApi = selectInfo.view.calendar;
+	const handleEventClick = (clickInfo: any) => {};
 
-		calendarApi.unselect();
-
-		if (title) {
-			calendarApi.addEvent({
-				id: uuid(),
-				title,
-				start: selectInfo.startStr,
-				end: selectInfo.endStr,
-				allDay: selectInfo.allDay
-			});
-		}
-	};
-
-	const handleEventClick = (clickInfo: any) => {
-		const confirmMethod = window.confirm || (() => true);
-
-		if (
-			confirmMethod(
-				`Are you sure you want to delete the event '${clickInfo.event.title}'`
-			)
-		) {
-			clickInfo.event.remove();
-		}
-	};
-
-	function renderEventContent(eventInfo: any) {
+	const renderEventContent = (eventInfo: any) => {
 		return (
-			<>
-				<b>{eventInfo.timeText}</b>
-				<i>{eventInfo.event.title}</i>
-			</>
+			<div className={styles.workout}>
+				<p className={styles.title}>{eventInfo.event.title}</p>
+			</div>
 		);
-	}
-
-	useEffect(() => {
-		setEvents(events);
-	}, [events]);
+	};
 
 	return (
-		<div style={{ height: '600px', width: '800px' }}>
+		<div className={styles.calendar}>
 			<FullCalendar
+				themeSystem='bootstrap5'
 				plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
 				headerToolbar={{
-					left: 'prev,next today',
-					center: 'title',
-					right: 'dayGridMonth'
+					left: 'prev today next',
+					right: 'title'
 				}}
 				initialView='dayGridMonth'
 				editable={true}
 				selectable={true}
 				selectMirror={true}
 				dayMaxEvents={true}
-				select={handleDateSelect}
 				eventContent={renderEventContent}
 				eventClick={handleEventClick}
-				events={events}
+				events={workouts}
 				height='100%'
+				firstDay={MONDAY}
 			/>
 		</div>
 	);

@@ -1,5 +1,6 @@
-import exercisesSlice from './exercisesSlice';
-import userSlice from './userSlice';
-import workoutsSlice from './workoutsSlice';
+import exercisesSlice from './exercises.slice';
+import notificationsSlice from './notifications.slice';
+import userSlice from './user.slice';
+import workoutsSlice from './workouts.slice';
 
-export { userSlice, exercisesSlice, workoutsSlice };
+export { userSlice, exercisesSlice, workoutsSlice, notificationsSlice };

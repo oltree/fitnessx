@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
 
 import { useAppDispatch } from '@/hooks/hooks';
 
-import { setUserFromLocalStorage } from '@/store/slices/userSlice';
+import { addNotification } from '@/store/slices/notifications.slice';
+import { setUserFromLocalStorage } from '@/store/slices/user.slice';
 
 import { AuthUserType } from '@/types/user.type';
 
 import { useStoredUsers } from './useStoredUsers';
+import { getFormattedDate } from '@/utils/helpers/getDate';
 
 export const useSignIn = () => {
 	const dispatch = useAppDispatch();
@@ -30,6 +33,15 @@ export const useSignIn = () => {
 		if (userExists) {
 			dispatch(setUserFromLocalStorage(users[0]));
 			setMessage('Login successful!');
+
+			const newNotification = {
+				id: uuid(),
+				message: 'Login successful!',
+				date: getFormattedDate(),
+				isCompleted: false
+			};
+			dispatch(addNotification(newNotification));
+
 			setRedirect(true);
 
 			reset();

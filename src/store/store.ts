@@ -5,10 +5,14 @@ import {
 	configureStore
 } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
-import { PERSIST } from 'redux-persist/es/constants';
 import storage from 'redux-persist/lib/storage';
 
-import { exercisesSlice, userSlice, workoutsSlice } from './slices';
+import {
+	exercisesSlice,
+	notificationsSlice,
+	userSlice,
+	workoutsSlice
+} from './slices';
 
 const persistConfig = {
 	key: 'root',
@@ -19,7 +23,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
 	user: userSlice,
 	exercises: exercisesSlice,
-	workouts: workoutsSlice
+	workouts: workoutsSlice,
+	notifications: notificationsSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -29,9 +34,7 @@ export const store = configureStore({
 	devTools: process.env.NODE_ENV !== 'production',
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [PERSIST]
-			}
+			serializableCheck: false
 		})
 });
 

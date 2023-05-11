@@ -3,9 +3,15 @@
 
 .form {
 	width: 100%;
+	margin-bottom: 20px;
+
+	.title {
+		margin-bottom: 10px;
+		font-weight: $medium;
+	}
 
 	.details {
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(2, 1fr);
@@ -32,7 +38,7 @@
 		height: 30px;
 		font-size: 14px;
 		font-weight: $regular;
-		background: $bg-purple;
+		background: $bg-blue;
 		border-radius: 10px;
 	}
 }

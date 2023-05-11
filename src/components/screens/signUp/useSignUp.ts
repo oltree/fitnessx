@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { v4 as uuid } from 'uuid';
+
+import { useAppDispatch } from '@/hooks/hooks';
+
+import { addNotification } from '@/store/slices/notifications.slice';
 
 import { AuthUserType } from '@/types/user.type';
 
+import { getFormattedDate } from '@/utils/helpers/getDate';
+
 export const useSignUp = () => {
+	const dispatch = useAppDispatch();
 	const [message, setMessage] = useState('');
 	const [redirect, setRedirect] = useState(false);
 	const {
@@ -26,6 +34,14 @@ export const useSignUp = () => {
 			setMessage('User with this email already exists!');
 		} else {
 			setMessage('Registration completed successfully!');
+
+			const newNotification = {
+				id: uuid(),
+				message: 'Registration completed successfully!',
+				date: getFormattedDate(),
+				isCompleted: false
+			};
+			dispatch(addNotification(newNotification));
 
 			const updatedUsers = [...users, newUser];
 			localStorage.setItem('users', JSON.stringify(updatedUsers));

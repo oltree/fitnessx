@@ -1,0 +1,19 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.calendar {
+	width: 100%;
+	height: 620px;
+
+	.workout {
+		width: 100%;
+		@include center();
+		background: $bg-blue;
+		border-radius: 10px;
+
+		.title {
+			padding: 5px 15px;
+			color: $white;
+		}
+	}
+}

@@ -1,13 +1,20 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
+import WeatherService from '@/services/weather.service';
+
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 
 import { exercisesSelector } from '@/store/selectors';
-import { addWorkout } from '@/store/slices/workoutsSlice';
+import {
+	removeAllExercise,
+	removeExercise
+} from '@/store/slices/exercises.slice';
+import { addNotification } from '@/store/slices/notifications.slice';
+import { addWorkout } from '@/store/slices/workouts.slice';
 
 import { Workout } from '@/types/workout.type';
 
@@ -17,61 +24,131 @@ import Button from '../button/Button';
 import ExerciseForm from '../exerciseForm/ExerciseForm';
 import Input from '../input/Input';
 
+import { MONDAY } from '@/utils/constants/days';
+import { getFormattedDate } from '@/utils/helpers/getDate';
+
+interface WorkoutFormData extends Workout {}
+
 const WorkoutForm: FC = () => {
 	const dispatch = useAppDispatch();
-	const exercises = useAppSelector(exercisesSelector);
 	const [startDate, setStartDate] = useState(new Date());
-	const { register, handleSubmit, reset } = useForm({ mode: 'onChange' });
+	const {
+		register,
+		handleSubmit,
+		reset,
+		formState: { errors }
+	} = useForm<WorkoutFormData>({ mode: 'onChange' });
 
-	const handleCreateWorkout = (data: any) => {
-		const { name } = data;
+	const exercises = useAppSelector(exercisesSelector);
+	const isExercises = !!exercises.length;
+	const isRunningWorkout = exercises.some(exercise => exercise.name === 'legs');
 
+	const handleCreateWorkout = (data: WorkoutFormData) => {
+		const { title } = data;
 		const newWorkout: Workout = {
 			id: uuid(),
 			date: startDate,
-			name,
+			title,
 			exercises
 		};
+
 		dispatch(addWorkout(newWorkout));
+		dispatch(removeAllExercise());
 
 		reset();
 	};
-
+	const handleDeleteExercise = (id: string) => dispatch(removeExercise(id));
 	const handleDateChange = (date: Date) => setStartDate(date);
+
+	useEffect(() => {
+		if (isRunningWorkout) {
+			const weatherService = new WeatherService();
+			const fetchWeatherMessage = async () => {
+				const message = await weatherService.getWeatherMessage('Minsk', 'legs');
+				const newNotification = {
+					id: uuid(),
+					message,
+					date: getFormattedDate(),
+					isCompleted: false
+				};
+				dispatch(addNotification(newNotification));
+			};
+			fetchWeatherMessage();
+		}
+	}, [isRunningWorkout, dispatch]);
 
 	return (
 		<div className={styles.workoutForm}>
-			<div className={styles.timeContainer}>
+			<form
+				onSubmit={handleSubmit(handleCreateWorkout)}
+				className={styles.form}
+			>
+				<div className={styles.buttonContainer}>
+					<p className={styles.title}>Details Workout</p>
+					<Button className={styles.button}>Create</Button>
+				</div>
+
+				<Input
+					type='text'
+					register={register('title', {
+						required: 'Workout name is required!'
+					})}
+					error={errors.title?.message}
+					placeholder='Workout name'
+					className={styles.input}
+				/>
+			</form>
+
+			<div className={styles.datepicker}>
 				<p className={styles.title}>Time</p>
 				<DatePicker
 					withPortal
 					dateFormat='dd-MM-yyyy'
 					selected={startDate}
 					onChange={handleDateChange}
+					calendarStartDay={MONDAY}
 					className={styles.datepickerInput}
 				/>
 			</div>
 
 			<ExerciseForm />
 
-			<form
-				onSubmit={handleSubmit(handleCreateWorkout)}
-				className={styles.form}
-			>
-				<div className={styles.workoutContainer}>
-					<p className={styles.title}>Details Workout</p>
-					<Input
-						type='text'
-						register={register('name')}
-						placeholder='Workout name'
-						className={styles.input}
-					/>
-				</div>
+			{isExercises && (
+				<div className={styles.exercises}>
+					{exercises.map(exercise => (
+						<div key={exercise.id} className={styles.exercise}>
+							<div className={styles.exerciseName}>
+								<p>{exercise.name}</p>
+								<img src={exercise.icon} alt={exercise.name} />
+							</div>
 
-				<div className={styles.buttonConatiner}>
-					<Button className={styles.button}>Create Workout</Button>
+							<span className={styles.line} />
+
+							<div className={styles.exerciseDetails}>
+								<p
+									className={styles.exerciseDetail}
+								>{`Sets : ${exercise.sets}`}</p>
+								<p
+									className={styles.exerciseDetail}
+								>{`Repetitions : ${exercise.sets}`}</p>
+								<p
+									className={styles.exerciseDetail}
+								>{`Lead time : ${exercise.sets}`}</p>
+								<p
+									className={styles.exerciseDetail}
+								>{`Work weight : ${exercise.sets}`}</p>
+							</div>
+
+							<button
+								onClick={() => handleDeleteExercise(exercise.id)}
+								className={styles.buttonDelete}
+							>
+								x
+							</button>
+						</div>
+					))}
 				</div>
-			</form>
+			)}
 		</div>
 	);
 };

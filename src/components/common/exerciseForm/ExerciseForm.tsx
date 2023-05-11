@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 
 import { useAppDispatch } from '@/hooks/hooks';
 
-import { addExercise } from '@/store/slices/exercisesSlice';
+import { addExercise } from '@/store/slices/exercises.slice';
 
 import { ExerciseType } from '@/types/exercise.type';
 
@@ -27,10 +27,19 @@ const ExerciseForm: FC = () => {
 		formState: { errors }
 	} = useForm<ExerciseFormData>({ mode: 'onChange' });
 
-	const handleCreateExercise = (data: any) => {
+	const handleCreateExercise = (data: ExerciseFormData) => {
 		const { exercise, sets, reps, time, weight } = data;
 		const { name, icon } = JSON.parse(exercise);
-		const newExercise = { id: uuid(), name, sets, reps, time, weight, icon };
+		const newExercise = {
+			id: uuid(),
+			name,
+			sets,
+			reps,
+			time,
+			weight,
+			icon,
+			isCompleted: false
+		};
 
 		dispatch(addExercise(newExercise));
 
@@ -38,7 +47,13 @@ const ExerciseForm: FC = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(handleCreateExercise)} className={styles.form}>
+		<form
+			id='workout'
+			onSubmit={handleSubmit(handleCreateExercise)}
+			className={styles.form}
+		>
+			<p className={styles.title}>Exersises</p>
+
 			<RadioGroup register={register('exercise', { required: true })} />
 
 			<div className={styles.details}>

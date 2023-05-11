@@ -5,6 +5,20 @@
 	@include center();
 	gap: 20px;
 
+	.notifications {
+		position: relative;
+
+		.point {
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			width: 5px;
+			height: 5px;
+			background: $red;
+			border-radius: 50%;
+		}
+	}
+
 	.button {
 		width: 40px;
 		height: 40px;

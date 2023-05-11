@@ -3,43 +3,52 @@ import { useLocation } from 'react-router-dom';
 
 import IconButton from '@/components/common/iconButton/IconButton';
 
-import { useAppDispatch } from '@/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 
-import { userLogout } from '@/store/slices/userSlice';
+import { notificationsSelector } from '@/store/selectors';
+import { userLogout } from '@/store/slices/user.slice';
 
 import { RoutePaths } from '@/types/route.type';
 
 import styles from './HeaderProfile.module.scss';
 
-import logout from '@/assets/icons/logout.svg';
-import notifications from '@/assets/icons/notifications.svg';
-import profile from '@/assets/icons/profile.svg';
+import logoutIcon from '@/assets/icons/logout.svg';
+import notificationsIcon from '@/assets/icons/notifications.svg';
+import profileIcon from '@/assets/icons/profile.svg';
 
 const HeaderProfile: FC = () => {
 	const dispatch = useAppDispatch();
 	const { pathname } = useLocation();
+	const notifications = useAppSelector(notificationsSelector);
+	const isNotifications = notifications.some(notice => !notice.isCompleted);
 	const isProfile = pathname === RoutePaths.PROFILE;
 
-	const handleLogout = useCallback(() => dispatch(userLogout()), [dispatch]);
+	const handleLogout = useCallback(() => {
+		localStorage.clear();
+		dispatch(userLogout());
+	}, [dispatch]);
 
 	return (
 		<div className={styles.profile}>
-			<IconButton
-				link={RoutePaths.NOTIFICATIONS}
-				icon={notifications}
-				text='notifications'
-				className={styles.button}
-			/>
+			<div className={styles.notifications}>
+				{isNotifications && <span className={styles.point} />}
+				<IconButton
+					link={RoutePaths.NOTIFICATIONS}
+					icon={notificationsIcon}
+					text='notifications'
+					className={styles.button}
+				/>
+			</div>
 			<IconButton
 				link={RoutePaths.PROFILE}
-				icon={profile}
+				icon={profileIcon}
 				text='profile'
 				className={styles.button}
 			/>
 			{isProfile && (
 				<IconButton
 					link={RoutePaths.SIGN_IN}
-					icon={logout}
+					icon={logoutIcon}
 					text='logout'
 					onClick={handleLogout}
 					className={styles.button}
