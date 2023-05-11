@@ -1,0 +1,93 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.profile {
+	@include center(flex, flex-start, space-between);
+	gap: 40px;
+
+	.title {
+		margin-bottom: 20px;
+		font-size: 18px;
+		font-weight: $medium;
+		text-align: center;
+	}
+
+	.date {
+		width: 20%;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.user {
+		width: 330px;
+	}
+
+	.statistics {
+		width: 100%;
+
+		.workout {
+			padding: 20px;
+			margin-bottom: 20px;
+			@include center(flex, center, space-between);
+			gap: 40px;
+			background: $yellow;
+			border-radius: 20px;
+
+			&__success {
+				background: $green;
+			}
+
+			.workoutTitle {
+				width: 20%;
+				font-weight: $medium;
+				text-align: center;
+			}
+		}
+
+		.exercises {
+			width: 50%;
+			@include center(flex, center, space-between);
+			flex-wrap: wrap;
+			gap: 10px;
+
+			.exercise {
+				@include center(flex, center, space-between);
+
+				.exerciseName {
+					width: 50px;
+					text-align: center;
+
+					p {
+						margin-bottom: 5px;
+						font-size: 11px;
+					}
+				}
+
+				.line {
+					width: 1px;
+					height: 50px;
+					background: $black;
+				}
+
+				.exerciseDetails {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					grid-template-rows: repeat(2, 1fr);
+
+					.exerciseDetail {
+						@include center(flex, center, space-between);
+						font-size: 11px;
+					}
+				}
+
+				.buttonDelete {
+					padding: 1px 8px;
+					margin-right: 5px;
+					color: $white;
+					background: $red;
+					border-radius: 50%;
+				}
+			}
+		}
+	}
+}

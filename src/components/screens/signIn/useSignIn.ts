@@ -10,7 +10,7 @@ import { setUserFromLocalStorage } from '@/store/slices/user.slice';
 import { AuthUserType } from '@/types/user.type';
 
 import { useStoredUsers } from './useStoredUsers';
-import { getFormattedDate } from '@/utils/helpers/getDate';
+import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
 
 export const useSignIn = () => {
 	const dispatch = useAppDispatch();

@@ -25,7 +25,7 @@ import ExerciseForm from '../exerciseForm/ExerciseForm';
 import Input from '../input/Input';
 
 import { MONDAY } from '@/utils/constants/days';
-import { getFormattedDate } from '@/utils/helpers/getDate';
+import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
 
 interface WorkoutFormData extends Workout {}
 
