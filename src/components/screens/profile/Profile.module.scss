@@ -24,6 +24,9 @@
 
 	.statistics {
 		width: 100%;
+		height: 85vh;
+		padding: 0 20px;
+		overflow: auto;
 
 		.workout {
 			padding: 20px;
@@ -35,6 +38,10 @@
 
 			&__success {
 				background: $green;
+			}
+
+			&__rejected {
+				background: $red;
 			}
 
 			.workoutTitle {
@@ -63,12 +70,6 @@
 					}
 				}
 
-				.line {
-					width: 1px;
-					height: 50px;
-					background: $black;
-				}
-
 				.exerciseDetails {
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
@@ -78,14 +79,6 @@
 						@include center(flex, center, space-between);
 						font-size: 11px;
 					}
-				}
-
-				.buttonDelete {
-					padding: 1px 8px;
-					margin-right: 5px;
-					color: $white;
-					background: $red;
-					border-radius: 50%;
 				}
 			}
 		}

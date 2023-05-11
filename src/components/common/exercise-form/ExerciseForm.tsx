@@ -10,7 +10,7 @@ import { ExerciseType } from '@/types/exercise.type';
 
 import styles from './ExerciseForm.module.scss';
 
-import Button from '../button/Button';
+import Button from '../buttons/button/Button';
 import Input from '../input/Input';
 import RadioGroup from '../radio-group/RadioGroup';
 

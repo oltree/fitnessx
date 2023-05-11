@@ -10,8 +10,11 @@ const workoutsSlice = createSlice({
 	reducers: {
 		addWorkout: (state, { payload }: PayloadAction<Workout>) => {
 			state.push(payload);
+			state.sort(
+				(a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+			);
 		},
-		deleteWorkout: (state, { payload: id }: PayloadAction<string>) => {
+		removeWorkout: (state, { payload: id }: PayloadAction<string>) => {
 			const foundIndex = state.findIndex(workout => workout.id === id);
 			if (foundIndex !== -1) {
 				state.splice(foundIndex, 1);
@@ -26,7 +29,7 @@ const workoutsSlice = createSlice({
 	}
 });
 
-export const { addWorkout, deleteWorkout, updateWorkout } =
+export const { addWorkout, removeWorkout, updateWorkout } =
 	workoutsSlice.actions;
 
 export default workoutsSlice.reducer;

@@ -1,0 +1,44 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.workout {
+	.button {
+		@include center(flex, center, space-between);
+
+		.title {
+			font-size: 20px;
+			font-weight: $medium;
+			margin-bottom: 40px;
+		}
+	}
+
+	.exercises {
+		@include center(flex, center, space-between);
+		flex-wrap: wrap;
+		gap: 20px;
+
+		.exercise {
+			@include center(flex, center, space-between);
+
+			.exerciseName {
+				width: 100px;
+				text-align: center;
+
+				p {
+					margin-bottom: 5px;
+				}
+			}
+
+			.exerciseDetails {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: repeat(2, 1fr);
+
+				.exerciseDetail {
+					@include center(flex, center, space-between);
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}

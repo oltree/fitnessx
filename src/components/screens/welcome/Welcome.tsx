@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Button from '@/components/common/button/Button';
+import Button from '@/components/common/buttons/button/Button';
 
 import { useAuth } from '@/hooks/useAuth';
 

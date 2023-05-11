@@ -9,6 +9,7 @@ import { workoutsSelector } from '@/store/selectors';
 import styles from './Profile.module.scss';
 
 import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
+import { isPastDate } from '@/utils/helpers/isFutureDate';
 
 const Profile: FC = () => {
 	const workouts = useAppSelector(workoutsSelector);
@@ -29,11 +30,14 @@ const Profile: FC = () => {
 						exercise => exercise.isCompleted
 					);
 
+					const isRejectedWorkout = isPastDate(workout.date);
+
 					return (
 						<div
 							key={workout.id}
 							className={cn(
 								styles.workout,
+								isRejectedWorkout && styles.workout__rejected,
 								isCompletedWorkout && styles.workout__success
 							)}
 						>

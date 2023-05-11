@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import IconButton from '@/components/common/icon-button/IconButton';
+import IconButton from '@/components/common/buttons/icon-button/IconButton';
 
 import { useAuth } from '@/hooks/useAuth';
 import { useUser } from '@/hooks/useUserInfo';

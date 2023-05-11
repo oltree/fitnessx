@@ -1,7 +1,7 @@
 import { FC, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import IconButton from '@/components/common/icon-button/IconButton';
+import IconButton from '@/components/common/buttons/icon-button/IconButton';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 
@@ -39,18 +39,20 @@ const HeaderProfile: FC = () => {
 					className={styles.button}
 				/>
 			</div>
-			<IconButton
-				link={RoutePaths.PROFILE}
-				icon={profileIcon}
-				text='profile'
-				className={styles.button}
-			/>
-			{isProfile && (
+
+			{isProfile ? (
 				<IconButton
 					link={RoutePaths.SIGN_IN}
 					icon={logoutIcon}
 					text='logout'
 					onClick={handleLogout}
+					className={styles.button}
+				/>
+			) : (
+				<IconButton
+					link={RoutePaths.PROFILE}
+					icon={profileIcon}
+					text='profile'
 					className={styles.button}
 				/>
 			)}

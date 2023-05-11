@@ -20,7 +20,8 @@ import { Workout } from '@/types/workout.type';
 
 import styles from './WorkoutForm.module.scss';
 
-import Button from '../button/Button';
+import Button from '../buttons/button/Button';
+import RemoveButton from '../buttons/remove-button/RemoveButton';
 import ExerciseForm from '../exercise-form/ExerciseForm';
 import Input from '../input/Input';
 
@@ -137,12 +138,7 @@ const WorkoutForm: FC = () => {
 								>{`Work weight : ${exercise.sets}`}</p>
 							</div>
 
-							<button
-								onClick={() => handleDeleteExercise(exercise.id)}
-								className={styles.buttonDelete}
-							>
-								x
-							</button>
+							<RemoveButton onClick={() => handleDeleteExercise(exercise.id)} />
 						</div>
 					))}
 				</div>
