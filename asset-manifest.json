@@ -1,19 +1,24 @@
 {
   "files": {
-    "main.css": "/fitnessx/static/css/main.061c1fdc.css",
-    "main.js": "/fitnessx/static/js/main.26b74fbf.js",
+    "main.css": "/fitnessx/static/css/main.88c92d4b.css",
+    "main.js": "/fitnessx/static/js/main.d0623828.js",
     "static/media/banner-pie.png": "/fitnessx/static/media/banner-pie.213a2bc635606088b3e9.png",
+    "static/media/shoulders.svg": "/fitnessx/static/media/shoulders.7ca0cefc7ad85e7fb8c676b6410c3d25.svg",
+    "static/media/biceps.svg": "/fitnessx/static/media/biceps.2114058d866a75350931608cc35a2c53.svg",
+    "static/media/chest.svg": "/fitnessx/static/media/chest.eed0bcc3cc366c5d448e2af428d5b3c6.svg",
+    "static/media/legs.svg": "/fitnessx/static/media/legs.1a3128185dc79f72f91bbadcaacd0f89.svg",
+    "static/media/hit.svg": "/fitnessx/static/media/hit.ffddb40db7c64b3ca65803de45ed88e0.svg",
     "static/media/notifications.svg": "/fitnessx/static/media/notifications.3cecb967d1aad124b072c83268ade075.svg",
     "static/media/loader.svg": "/fitnessx/static/media/loader.09e35ff12696ce7b2d156f679f2e3323.svg",
     "static/media/profile.svg": "/fitnessx/static/media/profile.e57fde4a3d8f51f6b38f680e782be170.svg",
     "static/media/logout.svg": "/fitnessx/static/media/logout.f0c543a2fb0b9276b0fa08f2abb5fd0e.svg",
     "index.html": "/fitnessx/index.html",
     "static/media/left.svg": "/fitnessx/static/media/left.c793ad4eca23ef3d0e4aa1ba1188c5e9.svg",
-    "main.061c1fdc.css.map": "/fitnessx/static/css/main.061c1fdc.css.map",
-    "main.26b74fbf.js.map": "/fitnessx/static/js/main.26b74fbf.js.map"
+    "main.88c92d4b.css.map": "/fitnessx/static/css/main.88c92d4b.css.map",
+    "main.d0623828.js.map": "/fitnessx/static/js/main.d0623828.js.map"
   },
   "entrypoints": [
-    "static/css/main.061c1fdc.css",
-    "static/js/main.26b74fbf.js"
+    "static/css/main.88c92d4b.css",
+    "static/js/main.d0623828.js"
   ]
 }
