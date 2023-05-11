@@ -2,19 +2,34 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import { useNavigate } from 'react-router-dom';
 
-import { useAppSelector } from '@/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 
 import { workoutsSelector } from '@/store/selectors';
+import { getCurrentWorkout } from '@/store/slices/current-workout.slice';
+
+import { RoutePaths } from '@/types/route.type';
 
 import styles from './Calendar.module.scss';
 
 import { MONDAY } from '@/utils/constants/days';
 
 const Calendar = () => {
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const workouts = useAppSelector(workoutsSelector);
 
-	const handleEventClick = (clickInfo: any) => {};
+	const handleEventClick = (checkInfo: any) => {
+		const foundWorkout = workouts.find(
+			workout => workout.id === checkInfo.event.id
+		);
+
+		if (foundWorkout) {
+			dispatch(getCurrentWorkout(foundWorkout));
+			navigate(RoutePaths.WORKOUT);
+		}
+	};
 
 	const renderEventContent = (eventInfo: any) => {
 		return (

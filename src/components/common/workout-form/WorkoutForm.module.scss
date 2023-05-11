@@ -64,12 +64,6 @@
 				}
 			}
 
-			.line {
-				width: 1px;
-				height: 50px;
-				background: $black;
-			}
-
 			.exerciseDetails {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);

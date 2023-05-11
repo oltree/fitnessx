@@ -1,18 +1,18 @@
 import { FC } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import IconButton from '@/components/common/iconButton/IconButton';
+import IconButton from '@/components/common/icon-button/IconButton';
 
 import { useAuth } from '@/hooks/useAuth';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/hooks/useUserInfo';
 
 import { RoutePaths } from '@/types/route.type';
 
 import styles from './Header.module.scss';
 
-import HeaderProfile from './headerProfile/HeaderProfile';
+import HeaderProfile from './header-profile/HeaderProfile';
 import left from '@/assets/icons/left.svg';
-import { showHeader } from '@/utils/helpers/showHeader';
+import { shouldShowHeader } from '@/utils/helpers/shouldShowHeader';
 
 const Header: FC = () => {
 	const isAuth = useAuth();
@@ -23,7 +23,7 @@ const Header: FC = () => {
 	const { firstName, lastName } = useUser();
 	const userName = `${firstName} ${lastName}`;
 
-	const isShowHeader = showHeader(pathname, isAuth);
+	const isShowHeader = shouldShowHeader(pathname, isAuth);
 
 	if (!isShowHeader) return null;
 

@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { FC } from 'react';
 
 import { useAppSelector } from '@/hooks/hooks';
-import { useUser } from '@/hooks/useUser';
+import { useUser } from '@/hooks/useUserInfo';
 
 import { workoutsSelector } from '@/store/selectors';
 

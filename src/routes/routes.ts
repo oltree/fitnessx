@@ -1,9 +1,12 @@
-import Home from '@/components/screens/home/Home';
-import Notifications from '@/components/screens/notifications/Notifications';
-import Profile from '@/components/screens/profile/Profile';
-import SignIn from '@/components/screens/signIn/SignIn';
-import SignUp from '@/components/screens/signUp/SignUp';
-import Welcome from '@/components/screens/welcome/Welcome';
+import {
+	Home,
+	Notifications,
+	Profile,
+	SignIn,
+	SignUp,
+	Welcome,
+	Workout
+} from '@/components/screens';
 
 import { RoutePaths, RouteType } from '@/types/route.type';
 
@@ -36,6 +39,11 @@ export const routes: RouteType[] = [
 	{
 		path: RoutePaths.PROFILE,
 		component: Profile,
+		isAuth: true
+	},
+	{
+		path: RoutePaths.WORKOUT,
+		component: Workout,
 		isAuth: true
 	}
 ];

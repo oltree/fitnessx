@@ -8,6 +8,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import {
+	currentWorkoutSlice,
 	exercisesSlice,
 	notificationsSlice,
 	userSlice,
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
 	user: userSlice,
 	exercises: exercisesSlice,
 	workouts: workoutsSlice,
-	notifications: notificationsSlice
+	notifications: notificationsSlice,
+	workout: currentWorkoutSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

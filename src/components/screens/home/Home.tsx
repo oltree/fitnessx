@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Banner from '@/components/common/banner/Banner';
 import Calendar from '@/components/common/calendar/Calendar';
-import WorkoutForm from '@/components/common/workoutForm/WorkoutForm';
+import WorkoutForm from '@/components/common/workout-form/WorkoutForm';
 
 import styles from './Home.module.scss';
 

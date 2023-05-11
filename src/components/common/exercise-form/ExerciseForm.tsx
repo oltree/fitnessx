@@ -12,7 +12,7 @@ import styles from './ExerciseForm.module.scss';
 
 import Button from '../button/Button';
 import Input from '../input/Input';
-import RadioGroup from '../radioGroup/RadioGroup';
+import RadioGroup from '../radio-group/RadioGroup';
 
 interface ExerciseFormData extends Omit<ExerciseType, 'name' | 'icon'> {
 	exercise: string;

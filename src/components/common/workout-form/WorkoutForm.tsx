@@ -21,7 +21,7 @@ import { Workout } from '@/types/workout.type';
 import styles from './WorkoutForm.module.scss';
 
 import Button from '../button/Button';
-import ExerciseForm from '../exerciseForm/ExerciseForm';
+import ExerciseForm from '../exercise-form/ExerciseForm';
 import Input from '../input/Input';
 
 import { MONDAY } from '@/utils/constants/days';
@@ -121,8 +121,6 @@ const WorkoutForm: FC = () => {
 								<p>{exercise.name}</p>
 								<img src={exercise.icon} alt={exercise.name} />
 							</div>
-
-							<span className={styles.line} />
 
 							<div className={styles.exerciseDetails}>
 								<p
