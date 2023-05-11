@@ -2,6 +2,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
@@ -9,11 +10,13 @@ import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 import { workoutsSelector } from '@/store/selectors';
 import { getCurrentWorkout } from '@/store/slices/current-workout.slice';
 
+import { ExerciseType } from '@/types/exercise.type';
 import { RoutePaths } from '@/types/route.type';
 
 import styles from './Calendar.module.scss';
 
 import { MONDAY } from '@/utils/constants/days';
+import { isPastDate } from '@/utils/helpers/isPastDate';
 
 const Calendar = () => {
 	const dispatch = useAppDispatch();
@@ -32,8 +35,12 @@ const Calendar = () => {
 	};
 
 	const renderEventContent = (eventInfo: any) => {
+		const isSuccess = eventInfo.event.extendedProps.exercises.every(
+			(exercise: ExerciseType) => exercise.isCompleted
+		);
+
 		return (
-			<div className={styles.workout}>
+			<div className={cn(styles.workout, isSuccess && styles.workout__success)}>
 				<p className={styles.title}>{eventInfo.event.title}</p>
 			</div>
 		);

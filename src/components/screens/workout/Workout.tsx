@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +7,8 @@ import RemoveButton from '@/components/common/buttons/remove-button/RemoveButton
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 
 import { currentWorkoutSelector } from '@/store/selectors';
-import { removeWorkout } from '@/store/slices/workouts.slice';
+import { updateExerciseInCurrentWorkout } from '@/store/slices/current-workout.slice';
+import { removeWorkout, updateWorkout } from '@/store/slices/workouts.slice';
 
 import { RoutePaths } from '@/types/route.type';
 
@@ -22,6 +24,12 @@ const Workout: FC = () => {
 		navigate(RoutePaths.HOME);
 	};
 
+	const handleCompleteExercise = (exerciseId: string) => {
+		dispatch(updateExerciseInCurrentWorkout(exerciseId));
+
+		dispatch(updateWorkout(workout));
+	};
+
 	return (
 		<div className={styles.workout}>
 			<div className={styles.button}>
@@ -30,7 +38,14 @@ const Workout: FC = () => {
 			</div>
 			<div className={styles.exercises}>
 				{workout.exercises.map(exercise => (
-					<div key={exercise.id} className={styles.exercise}>
+					<div
+						key={exercise.id}
+						onClick={() => handleCompleteExercise(exercise.id)}
+						className={cn(
+							styles.exercise,
+							exercise.isCompleted && styles.exercise__success
+						)}
+					>
 						<div className={styles.exerciseName}>
 							<p>{exercise.name}</p>
 							<img src={exercise.icon} alt={exercise.name} />

@@ -11,6 +11,14 @@
 		background: $bg-blue;
 		border-radius: 10px;
 
+		&__success {
+			background: $green;
+		}
+
+		&__reject {
+			background: $red;
+		}
+
 		.title {
 			padding: 5px 15px;
 			color: $white;

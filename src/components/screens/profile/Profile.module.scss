@@ -49,35 +49,35 @@
 				font-weight: $medium;
 				text-align: center;
 			}
-		}
 
-		.exercises {
-			width: 50%;
-			@include center(flex, center, space-between);
-			flex-wrap: wrap;
-			gap: 10px;
-
-			.exercise {
+			.exercises {
+				width: 50%;
 				@include center(flex, center, space-between);
+				flex-wrap: wrap;
+				gap: 10px;
 
-				.exerciseName {
-					width: 50px;
-					text-align: center;
+				.exercise {
+					@include center(flex, center, space-between);
 
-					p {
-						margin-bottom: 5px;
-						font-size: 11px;
+					.exerciseName {
+						width: 50px;
+						text-align: center;
+
+						p {
+							margin-bottom: 5px;
+							font-size: 11px;
+						}
 					}
-				}
 
-				.exerciseDetails {
-					display: grid;
-					grid-template-columns: repeat(2, 1fr);
-					grid-template-rows: repeat(2, 1fr);
+					.exerciseDetails {
+						display: grid;
+						grid-template-columns: repeat(2, 1fr);
+						grid-template-rows: repeat(2, 1fr);
 
-					.exerciseDetail {
-						@include center(flex, center, space-between);
-						font-size: 11px;
+						.exerciseDetail {
+							@include center(flex, center, space-between);
+							font-size: 11px;
+						}
 					}
 				}
 			}

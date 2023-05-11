@@ -9,7 +9,7 @@ import { workoutsSelector } from '@/store/selectors';
 import styles from './Profile.module.scss';
 
 import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
-import { isPastDate } from '@/utils/helpers/isFutureDate';
+import { isPastDate } from '@/utils/helpers/isPastDate';
 
 const Profile: FC = () => {
 	const workouts = useAppSelector(workoutsSelector);
