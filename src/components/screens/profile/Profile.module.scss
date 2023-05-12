@@ -2,85 +2,132 @@
 @import 'src/assets/styles/mixins';
 
 .profile {
-	@include center(flex, flex-start, space-between);
-	gap: 40px;
+  @include center(flex, flex-start, space-between);
+  gap: 40px;
 
-	.title {
-		margin-bottom: 20px;
-		font-size: 18px;
-		font-weight: $medium;
-		text-align: center;
-	}
+  .title {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: $medium;
+    text-align: center;
+  }
 
-	.date {
-		width: 20%;
-		font-size: 14px;
-		text-align: center;
-	}
+  .date {
+    width: 20%;
+    font-size: 14px;
+    text-align: center;
+  }
 
-	.user {
-		width: 330px;
-	}
+  .user {
+    width: 330px;
+  }
 
-	.statistics {
-		width: 100%;
-		height: 85vh;
-		padding: 0 20px;
-		overflow: auto;
+  .statistics {
+    width: 100%;
+    height: 85vh;
+    padding: 0 20px;
+    overflow: auto;
 
-		.workout {
-			padding: 20px;
-			margin-bottom: 20px;
-			@include center(flex, center, space-between);
-			gap: 40px;
-			background: $yellow;
-			border-radius: 20px;
+    .workout {
+      padding: 20px;
+      margin-bottom: 20px;
+      @include center(flex, center, space-between);
+      gap: 40px;
+      background: $yellow;
+      border-radius: 20px;
 
-			&__success {
-				background: $green;
-			}
+      &__success {
+        background: $green;
+      }
 
-			&__rejected {
-				background: $red;
-			}
+      &__rejected {
+        background: $red;
+      }
 
-			.workoutTitle {
-				width: 20%;
-				font-weight: $medium;
-				text-align: center;
-			}
+      .workoutTitle {
+        width: 20%;
+        font-weight: $medium;
+        text-align: center;
+      }
 
-			.exercises {
-				width: 50%;
-				@include center(flex, center, space-between);
-				flex-wrap: wrap;
-				gap: 10px;
+      .exercises {
+        width: 50%;
+        @include center(flex, center, space-between);
+        flex-wrap: wrap;
+        gap: 10px;
 
-				.exercise {
-					@include center(flex, center, space-between);
+        .exercise {
+          @include center(flex, center, space-between);
 
-					.exerciseName {
-						width: 50px;
-						text-align: center;
+          .exerciseName {
+            width: 50px;
+            text-align: center;
 
-						p {
-							margin-bottom: 5px;
-							font-size: 11px;
-						}
-					}
+            p {
+              margin-bottom: 5px;
+              font-size: 11px;
+            }
+          }
 
-					.exerciseDetails {
-						display: grid;
-						grid-template-columns: repeat(2, 1fr);
-						grid-template-rows: repeat(2, 1fr);
+          .exerciseDetails {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
 
-						.exerciseDetail {
-							@include center(flex, center, space-between);
-							font-size: 11px;
-						}
-					}
-				}
-			}
-		}
-	}
+            .exerciseDetail {
+              @include center(flex, center, space-between);
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile {
+    display: block;
+    text-align: center;
+
+    .date {
+      font-size: 11px;
+    }
+
+    .user {
+      margin-bottom: 20px;
+    }
+
+    .statistics {
+      height: 100%;
+      padding: 0;
+
+      .workout {
+        padding: 10px;
+        gap: 10px;
+
+        .workoutTitle {
+          font-size: 12px;
+        }
+
+        .exercises {
+          width: 100%;
+
+          .exercise {
+            gap: 20px;
+
+            .exerciseName {
+              width: 30px;
+            }
+
+            .exerciseDetails {
+              .exerciseDetail {
+                font-size: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

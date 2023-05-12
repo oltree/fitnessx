@@ -5,3 +5,15 @@
   @include center(flex, flex-start, space-between);
   gap: 40px;
 }
+
+@media (max-width: 768px) {
+  .home {
+    max-width: 330px;
+    margin: 0 auto;
+    display: block;
+
+    .creareConainer {
+      margin-bottom: 30px;
+    }
+  }
+}

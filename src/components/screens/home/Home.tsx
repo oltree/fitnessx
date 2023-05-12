@@ -8,7 +8,7 @@ import styles from './Home.module.scss';
 
 const Home: FC = () => (
   <div className={styles.home}>
-    <div>
+    <div className={styles.creareConainer}>
       <Banner />
       <WorkoutForm />
     </div>

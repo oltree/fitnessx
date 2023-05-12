@@ -3,12 +3,12 @@
 
 .workout {
   .button {
+    margin-bottom: 30px;
     @include center(flex, center, space-between);
 
     .title {
       font-size: 20px;
       font-weight: $medium;
-      margin-bottom: 40px;
     }
   }
 
