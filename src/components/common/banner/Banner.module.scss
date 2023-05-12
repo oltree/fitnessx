@@ -2,48 +2,45 @@
 @import 'src/assets/styles/mixins';
 
 .banner {
-	height: 150px;
-	max-width: 350px;
-	padding: 20px;
-	margin-bottom: 30px;
-	@include center();
-	gap: 5px;
-	background: $bg-purple-blue;
-	border-radius: 30px;
-	box-shadow: $bs-default;
+  height: 150px;
+  max-width: 350px;
+  padding: 20px;
+  margin-bottom: 30px;
+  @include center();
+  gap: 5px;
+  background: $bg-purple-blue;
+  border-radius: 30px;
+  box-shadow: $bs-default;
 
-	.content {
-		color: $white;
+  .content {
+    color: $white;
 
-		.tilte {
-			margin-bottom: 5px;
-			font-size: 14px;
-			font-weight: $semi-bold;
-		}
+    .tilte {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: $semi-bold;
+    }
 
-		.subtitle {
-			margin-bottom: 15px;
-			font-size: 14px;
-		}
+    .subtitle {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
 
-		.button {
-			width: 95px;
-			height: 35px;
-			@include center();
-			background: $bg-purple;
-			border-radius: 50px;
+    .link {
+      width: 95px;
+      height: 35px;
+      @include center();
+      color: $white;
+      font-size: 12px;
+      font-weight: $medium;
+      text-transform: capitalize;
+      background: $bg-purple;
+      border-radius: 50px;
+    }
+  }
 
-			a {
-				color: $white;
-				font-size: 12px;
-				font-weight: $medium;
-				text-transform: capitalize;
-			}
-		}
-	}
-
-	> img {
-		width: 120px;
-		height: 120px;
-	}
+  > img {
+    width: 120px;
+    height: 120px;
+  }
 }

@@ -2,26 +2,26 @@
 @import 'src/assets/styles/mixins';
 
 .calendar {
-	width: 100%;
-	height: 620px;
+  width: 100%;
+  height: 620px;
 
-	.workout {
-		width: 100%;
-		@include center();
-		background: $bg-blue;
-		border-radius: 10px;
+  .workout {
+    width: 100%;
+    @include center();
+    background: $bg-blue;
+    border-radius: 10px;
 
-		&__success {
-			background: $green;
-		}
+    &__success {
+      background: $green;
+    }
 
-		&__reject {
-			background: $red;
-		}
+    &__reject {
+      background: $red;
+    }
 
-		.title {
-			padding: 5px 15px;
-			color: $white;
-		}
-	}
+    .title {
+      padding: 5px 15px;
+      color: $white;
+    }
+  }
 }

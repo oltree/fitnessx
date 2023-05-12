@@ -1,0 +1,25 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.details {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px 20px;
+
+  .detail {
+    @include center(flex, center, space-between);
+
+    .name {
+      font-size: 14px;
+    }
+
+    .input {
+      width: 40px;
+      padding: 5px;
+      text-align: center;
+      border-radius: 4px;
+    }
+  }
+}

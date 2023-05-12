@@ -1,6 +1,6 @@
 @import 'src/assets/styles/mixins';
 
 .loader {
-	height: 100vh;
-	@include center();
+  height: 100vh;
+  @include center();
 }

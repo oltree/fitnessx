@@ -2,23 +2,23 @@
 @import 'src/assets/styles/mixins';
 
 .notifications {
-	@include center(flex, flex-start, center);
-	flex-direction: column;
-	gap: 20px;
+  @include center(flex, flex-start, center);
+  flex-direction: column;
+  gap: 20px;
 
-	.notice {
-		@include center(flex, center, space-between);
-		width: 100%;
-		padding: 20px;
-		background: $blue-lighter;
-		border-radius: 10px;
+  .notice {
+    @include center(flex, center, space-between);
+    width: 100%;
+    padding: 20px;
+    background: $blue-lighter;
+    border-radius: 10px;
 
-		&__success {
-			background: $gray-lighter;
-		}
+    &__success {
+      background: $gray-lighter;
+    }
 
-		p {
-			font-size: 14px;
-		}
-	}
+    p {
+      font-size: 14px;
+    }
+  }
 }

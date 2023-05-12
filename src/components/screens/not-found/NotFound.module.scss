@@ -1,0 +1,12 @@
+@import 'src/assets/styles/mixins';
+
+.wrapper {
+  height: 100vh;
+  @include center();
+  flex-direction: column;
+  gap: 30px;
+
+  .text {
+    font-size: 30px;
+  }
+}

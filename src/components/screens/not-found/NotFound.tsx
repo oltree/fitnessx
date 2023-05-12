@@ -1,7 +1,14 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
-const NotFound: FC = () => {
-	return <div>Page not found</div>;
-};
+import styles from './NotFound.module.scss';
 
-export default NotFound;
+import notFound from '@/assets/images/not-found.png';
+
+const NotFound: FC = () => (
+  <div className={styles.wrapper}>
+    <img src={notFound} alt='not found' />
+    <p className={styles.text}>Page not found!</p>
+  </div>
+);
+
+export default memo(NotFound);

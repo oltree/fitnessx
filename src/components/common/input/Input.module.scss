@@ -1,18 +1,18 @@
 @import 'src/assets/styles/variables';
 
 .input {
-	width: 315px;
-	padding: 15px;
-	background: $off-white;
-	border: 1px solid $off-white;
-	border-radius: 14px;
+  width: 315px;
+  padding: 15px;
+  background: $off-white;
+  border: 1px solid $off-white;
+  border-radius: 14px;
 
-	&::placeholder {
-		color: $gray-light;
-		font-size: 12px;
-	}
+  &::placeholder {
+    color: $gray-light;
+    font-size: 12px;
+  }
 
-	&__error {
-		border: 1px $red solid;
-	}
+  &__error {
+    border: 1px $red solid;
+  }
 }

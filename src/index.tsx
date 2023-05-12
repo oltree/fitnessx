@@ -18,15 +18,15 @@ const root = createRoot(container);
 const persistor = persistStore(store);
 
 root.render(
-	<StrictMode>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
-			<Provider store={store}>
-				<PersistGate loading={null} persistor={persistor}>
-					<Layout>
-						<Router />
-					</Layout>
-				</PersistGate>
-			</Provider>
-		</BrowserRouter>
-	</StrictMode>
+  <StrictMode>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Layout>
+            <Router />
+          </Layout>
+        </PersistGate>
+      </Provider>
+    </BrowserRouter>
+  </StrictMode>
 );

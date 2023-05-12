@@ -1,13 +1,13 @@
-@import 'src/assets/styles/mixins';
 @import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
 
 .button {
-	@include center();
-	background: $off-white;
-	box-shadow: $bs-default;
-	border-radius: 8px;
+  @include center();
+  background: $off-white;
+  box-shadow: $bs-default;
+  border-radius: 8px;
 
-	&:hover {
-		background: $gray-lighter;
-	}
+  &:hover {
+    background: $gray-lighter;
+  }
 }

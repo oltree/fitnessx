@@ -1,0 +1,28 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.form {
+  .buttonContainer {
+    margin-bottom: 10px;
+    @include center(flex, center, space-between);
+
+    .title {
+      font-weight: $medium;
+    }
+
+    .button {
+      width: 100px;
+      height: 30px;
+      font-size: 14px;
+      font-weight: $regular;
+      background: $bg-purple;
+      border-radius: 10px;
+    }
+  }
+}
+
+.input {
+  width: 290px;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}

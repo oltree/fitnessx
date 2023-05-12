@@ -11,50 +11,50 @@ import { AuthUserType } from '@/types/user.type';
 import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
 
 export const useSignUp = () => {
-	const dispatch = useAppDispatch();
-	const [message, setMessage] = useState('');
-	const [redirect, setRedirect] = useState(false);
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors }
-	} = useForm<AuthUserType>({ mode: 'onChange' });
+  const dispatch = useAppDispatch();
+  const [message, setMessage] = useState('');
+  const [redirect, setRedirect] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<AuthUserType>({ mode: 'onChange' });
 
-	const registerUser = (data: AuthUserType) => {
-		const { firstName, lastName, email, password } = data;
-		const newUser: AuthUserType = { firstName, lastName, email, password };
+  const registerUser = (data: AuthUserType) => {
+    const { firstName, lastName, email, password } = data;
+    const newUser: AuthUserType = { firstName, lastName, email, password };
 
-		const users: AuthUserType[] = JSON.parse(
-			localStorage.getItem('users') || '[]'
-		);
-		const userExists = users.find((user: AuthUserType) => user.email === email);
+    const users: AuthUserType[] = JSON.parse(
+      localStorage.getItem('users') || '[]'
+    );
+    const userExists = users.find((user: AuthUserType) => user.email === email);
 
-		if (userExists) {
-			setMessage('User with this email already exists!');
-		} else {
-			setMessage('Registration completed successfully!');
+    if (userExists) {
+      setMessage('User with this email already exists!');
+    } else {
+      setMessage('Registration completed successfully!');
 
-			const newNotification = {
-				id: uuid(),
-				message: 'Registration completed successfully!',
-				date: getFormattedDate(),
-				isCompleted: false
-			};
-			dispatch(addNotification(newNotification));
+      const newNotification = {
+        id: uuid(),
+        message: 'Registration completed successfully!',
+        date: getFormattedDate(),
+        isCompleted: false
+      };
+      dispatch(addNotification(newNotification));
 
-			const updatedUsers = [...users, newUser];
-			localStorage.setItem('users', JSON.stringify(updatedUsers));
+      const updatedUsers = [...users, newUser];
+      localStorage.setItem('users', JSON.stringify(updatedUsers));
 
-			setRedirect(true);
+      setRedirect(true);
 
-			reset();
-		}
-	};
+      reset();
+    }
+  };
 
-	const onSubmit = handleSubmit(registerUser);
+  const onSubmit = handleSubmit(registerUser);
 
-	return { message, redirect, errors, register, onSubmit };
+  return { message, redirect, errors, register, onSubmit };
 };
 
 export type signUpReturnType = ReturnType<typeof useSignUp>;

@@ -3,38 +3,38 @@
 @import 'src/assets/styles/animations';
 
 .welcome {
-	height: 100vh;
-	@include center();
-	flex-direction: column;
+  height: 100vh;
+  @include center();
+  flex-direction: column;
 
-	.title {
-		font-size: 48px;
-		font-weight: $bold;
+  .title {
+    font-size: 48px;
+    font-weight: $bold;
 
-		span {
-			font-size: 65px;
-			color: transparent;
-			background: $bg-purple-blue;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
+    span {
+      font-size: 65px;
+      color: transparent;
+      background: $bg-purple-blue;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-		animation-name: opacity;
-		animation-duration: 1s;
-	}
+    animation-name: opacity;
+    animation-duration: 1s;
+  }
 
-	.subtitle {
-		margin-bottom: 100px;
-		color: $gray;
-		font-size: 18px;
+  .subtitle {
+    margin-bottom: 100px;
+    color: $gray;
+    font-size: 18px;
 
-		animation-name: opacity;
-		animation-duration: 3s;
-	}
+    animation-name: opacity;
+    animation-duration: 3s;
+  }
 
-	.button {
-		animation-name: opacity;
-		animation-duration: 5s;
-	}
+  .button {
+    animation-name: opacity;
+    animation-duration: 5s;
+  }
 }

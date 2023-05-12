@@ -2,37 +2,37 @@
 @import 'src/assets/styles/variables';
 
 .header {
-	height: 113px;
-	padding: 30px 0;
-	@include center(flex, center, space-between);
-	text-transform: capitalize;
+  height: 113px;
+  padding: 30px 0;
+  @include center(flex, center, space-between);
+  text-transform: capitalize;
 
-	.welcome {
-		.text {
-			margin-bottom: 5px;
-			font-size: 12px;
-			color: $gray-light;
-		}
-		.user {
-			color: #1d1617;
-			font-size: 20px;
-			font-weight: $bold;
-		}
-	}
+  .welcome {
+    .text {
+      margin-bottom: 5px;
+      font-size: 12px;
+      color: $gray-light;
+    }
+    .user {
+      color: #1d1617;
+      font-size: 20px;
+      font-weight: $bold;
+    }
+  }
 
-	.pageTitle {
-		font-weight: $bold;
-	}
+  .pageTitle {
+    font-weight: $bold;
+  }
 
-	.buttonBack {
-		width: 32px;
-		height: 32px;
-	}
+  .buttonBack {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media (max-width: $tablet) {
-	.header {
-		height: 113px;
-		padding: 15px 0;
-	}
+  .header {
+    height: 113px;
+    padding: 15px 0;
+  }
 }

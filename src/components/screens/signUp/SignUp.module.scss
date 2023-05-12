@@ -2,58 +2,58 @@
 @import 'src/assets/styles/variables';
 
 .signUp {
-	position: relative;
-	height: 100vh;
-	@include center();
-	flex-direction: column;
+  position: relative;
+  height: 100vh;
+  @include center();
+  flex-direction: column;
 
-	.subtitle {
-		margin-bottom: 5px;
-		text-transform: capitalize;
-	}
+  .subtitle {
+    margin-bottom: 5px;
+    text-transform: capitalize;
+  }
 
-	.title {
-		margin-bottom: 30px;
-		font-size: 20px;
-		font-weight: $bold;
-		text-transform: capitalize;
-	}
+  .title {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: $bold;
+    text-transform: capitalize;
+  }
 
-	.form {
-		@include center();
-		flex-direction: column;
-		gap: 15px;
+  .form {
+    @include center();
+    flex-direction: column;
+    gap: 15px;
 
-		.lastInput {
-			margin-bottom: 35px;
-		}
+    .lastInput {
+      margin-bottom: 35px;
+    }
 
-		.button {
-			margin-bottom: 30px;
-		}
-	}
+    .button {
+      margin-bottom: 30px;
+    }
+  }
 
-	.message {
-		position: absolute;
-		top: 5%;
-		color: $red;
+  .message {
+    position: absolute;
+    top: 5%;
+    color: $red;
 
-		&__success {
-			color: $green;
-		}
-	}
+    &__success {
+      color: $green;
+    }
+  }
 
-	.linkContainer {
-		display: flex;
-		gap: 5px;
-		font-size: 14px;
+  .linkContainer {
+    display: flex;
+    gap: 5px;
+    font-size: 14px;
 
-		.link {
-			color: transparent;
-			background: $bg-purple;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
-	}
+    .link {
+      color: transparent;
+      background: $bg-purple;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
 }

@@ -2,51 +2,51 @@
 @import 'src/assets/styles/mixins';
 
 .workout {
-	.button {
-		@include center(flex, center, space-between);
+  .button {
+    @include center(flex, center, space-between);
 
-		.title {
-			font-size: 20px;
-			font-weight: $medium;
-			margin-bottom: 40px;
-		}
-	}
+    .title {
+      font-size: 20px;
+      font-weight: $medium;
+      margin-bottom: 40px;
+    }
+  }
 
-	.exercises {
-		@include center(flex, center, space-between);
-		flex-wrap: wrap;
-		gap: 20px;
+  .exercises {
+    @include center(flex, center, space-between);
+    flex-wrap: wrap;
+    gap: 20px;
 
-		.exercise {
-			padding: 20px;
-			@include center(flex, center, space-between);
-			background: $yellow;
-			border-radius: 20px;
-			cursor: pointer;
+    .exercise {
+      padding: 20px;
+      @include center(flex, center, space-between);
+      background: $yellow;
+      border-radius: 20px;
+      cursor: pointer;
 
-			&__success {
-				background: $green;
-			}
+      &__success {
+        background: $green;
+      }
 
-			.exerciseName {
-				width: 50px;
-				text-align: center;
+      .exerciseName {
+        width: 50px;
+        text-align: center;
 
-				p {
-					margin-bottom: 5px;
-				}
-			}
+        p {
+          margin-bottom: 5px;
+        }
+      }
 
-			.exerciseDetails {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				grid-template-rows: repeat(2, 1fr);
+      .exerciseDetails {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
 
-				.exerciseDetail {
-					@include center(flex, center, space-between);
-					font-size: 14px;
-				}
-			}
-		}
-	}
+        .exerciseDetail {
+          @include center(flex, center, space-between);
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }

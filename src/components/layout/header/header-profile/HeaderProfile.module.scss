@@ -2,37 +2,37 @@
 @import 'src/assets/styles/variables';
 
 .profile {
-	@include center();
-	gap: 20px;
+  @include center();
+  gap: 20px;
 
-	.notifications {
-		position: relative;
+  .notifications {
+    position: relative;
 
-		.point {
-			position: absolute;
-			top: 8px;
-			right: 8px;
-			width: 5px;
-			height: 5px;
-			background: $red;
-			border-radius: 50%;
-		}
-	}
+    .point {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 5px;
+      height: 5px;
+      background: $red;
+      border-radius: 50%;
+    }
+  }
 
-	.button {
-		width: 40px;
-		height: 40px;
-	}
+  .button {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media (max-width: $tablet) {
-	.profile {
-		@include center();
-		gap: 15px;
+  .profile {
+    @include center();
+    gap: 15px;
 
-		.button {
-			width: 36px;
-			height: 36px;
-		}
-	}
+    .button {
+      width: 36px;
+      height: 36px;
+    }
+  }
 }

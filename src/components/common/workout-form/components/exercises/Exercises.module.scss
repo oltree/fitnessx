@@ -1,0 +1,32 @@
+@import 'src/assets/styles/variables';
+@import 'src/assets/styles/mixins';
+
+.exercises {
+  max-height: 130px;
+  overflow: auto;
+
+  .exercise {
+    @include center(flex, center, space-between);
+
+    .exerciseName {
+      width: 50px;
+      text-align: center;
+
+      p {
+        margin-bottom: 5px;
+        font-size: 11px;
+      }
+    }
+
+    .exerciseDetails {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      .exerciseDetail {
+        @include center(flex, center, space-between);
+        font-size: 11px;
+      }
+    }
+  }
+}

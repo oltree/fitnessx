@@ -5,9 +5,9 @@ import userSlice from './user.slice';
 import workoutsSlice from './workouts.slice';
 
 export {
-	userSlice,
-	exercisesSlice,
-	workoutsSlice,
-	notificationsSlice,
-	currentWorkoutSlice
+  userSlice,
+  exercisesSlice,
+  workoutsSlice,
+  notificationsSlice,
+  currentWorkoutSlice
 };

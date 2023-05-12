@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import RemoveButton from '@/components/common/buttons/remove-button/RemoveButton';
@@ -15,61 +15,61 @@ import { RoutePaths } from '@/types/route.type';
 import styles from './Workout.module.scss';
 
 const Workout: FC = () => {
-	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
-	const workout = useAppSelector(currentWorkoutSelector);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const workout = useAppSelector(currentWorkoutSelector);
 
-	const handleRemoveWorkout = () => {
-		dispatch(removeWorkout(workout.id));
-		navigate(RoutePaths.HOME);
-	};
+  const handleRemoveWorkout = () => {
+    dispatch(removeWorkout(workout.id));
+    navigate(RoutePaths.HOME);
+  };
 
-	const handleCompleteExercise = (exerciseId: string) => {
-		dispatch(updateExerciseInCurrentWorkout(exerciseId));
+  const handleCompleteExercise = (exerciseId: string) => {
+    dispatch(updateExerciseInCurrentWorkout(exerciseId));
 
-		dispatch(updateWorkout(workout));
-	};
+    dispatch(updateWorkout(workout));
+  };
 
-	return (
-		<div className={styles.workout}>
-			<div className={styles.button}>
-				<p className={styles.title}>{`Workout name - ${workout.title}`}</p>
-				<RemoveButton onClick={handleRemoveWorkout} />
-			</div>
-			<div className={styles.exercises}>
-				{workout.exercises.map(exercise => (
-					<div
-						key={exercise.id}
-						onClick={() => handleCompleteExercise(exercise.id)}
-						className={cn(
-							styles.exercise,
-							exercise.isCompleted && styles.exercise__success
-						)}
-					>
-						<div className={styles.exerciseName}>
-							<p>{exercise.name}</p>
-							<img src={exercise.icon} alt={exercise.name} />
-						</div>
+  return (
+    <div className={styles.workout}>
+      <div className={styles.button}>
+        <p className={styles.title}>{`Workout name - ${workout.title}`}</p>
+        <RemoveButton onClick={handleRemoveWorkout} />
+      </div>
+      <div className={styles.exercises}>
+        {workout.exercises.map(exercise => (
+          <div
+            key={exercise.id}
+            onClick={() => handleCompleteExercise(exercise.id)}
+            className={cn(
+              styles.exercise,
+              exercise.isCompleted && styles.exercise__success
+            )}
+          >
+            <div className={styles.exerciseName}>
+              <p>{exercise.name}</p>
+              <img src={exercise.icon} alt={exercise.name} />
+            </div>
 
-						<div className={styles.exerciseDetails}>
-							<p
-								className={styles.exerciseDetail}
-							>{`Sets : ${exercise.sets}`}</p>
-							<p
-								className={styles.exerciseDetail}
-							>{`Repetitions : ${exercise.sets}`}</p>
-							<p
-								className={styles.exerciseDetail}
-							>{`Lead time : ${exercise.sets}`}</p>
-							<p
-								className={styles.exerciseDetail}
-							>{`Work weight : ${exercise.sets}`}</p>
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-	);
+            <div className={styles.exerciseDetails}>
+              <p
+                className={styles.exerciseDetail}
+              >{`Sets : ${exercise.sets}`}</p>
+              <p
+                className={styles.exerciseDetail}
+              >{`Repetitions : ${exercise.sets}`}</p>
+              <p
+                className={styles.exerciseDetail}
+              >{`Lead time : ${exercise.sets}`}</p>
+              <p
+                className={styles.exerciseDetail}
+              >{`Work weight : ${exercise.sets}`}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default Workout;
+export default memo(Workout);
