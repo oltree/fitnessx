@@ -2,9 +2,7 @@ import cn from 'classnames';
 import { FC, memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Button from '@/components/common/buttons/button/Button';
-import Input from '@/components/common/input/Input';
-import Loader from '@/components/common/loader/Loader';
+import { Button, Input, Loader } from '@/components/common';
 
 import { useRedirect } from '@/hooks/useRedirect';
 

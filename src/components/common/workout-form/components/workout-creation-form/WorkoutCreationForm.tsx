@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
@@ -30,23 +30,20 @@ const WorkoutCreationForm: FC<FormProps> = ({ startDate, exercises }) => {
     formState: { errors }
   } = useForm<Workout>({ mode: 'onChange' });
 
-  const handleCreateWorkout = useCallback(
-    (data: Workout) => {
-      const { title } = data;
-      const newWorkout: Workout = {
-        id: uuid(),
-        date: startDate,
-        title,
-        exercises
-      };
+  const handleCreateWorkout = (data: Workout) => {
+    const { title } = data;
+    const newWorkout: Workout = {
+      id: uuid(),
+      date: startDate,
+      title,
+      exercises
+    };
 
-      dispatch(addWorkout(newWorkout));
-      dispatch(removeAllExercise());
+    dispatch(addWorkout(newWorkout));
+    dispatch(removeAllExercise());
 
-      reset();
-    },
-    [dispatch, exercises, reset, startDate]
-  );
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(handleCreateWorkout)} className={styles.form}>

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Button from '@/components/common/buttons/button/Button';
+import { Button } from '@/components/common';
 
 import { useAuth } from '@/hooks/useAuth';
 

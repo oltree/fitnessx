@@ -19,10 +19,20 @@
       border-radius: 10px;
     }
   }
+
+  .input {
+    width: 290px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+  }
 }
 
-.input {
-  width: 290px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+@media (max-width: 768px) {
+  .form {
+    .input {
+      width: 270px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+    }
+  }
 }

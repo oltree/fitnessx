@@ -1,8 +1,6 @@
 import { FC, memo } from 'react';
 
-import Banner from '@/components/common/banner/Banner';
-import Calendar from '@/components/common/calendar/Calendar';
-import WorkoutForm from '@/components/common/workout-form/WorkoutForm';
+import { Banner, Calendar, WorkoutForm } from '@/components/common';
 
 import styles from './Home.module.scss';
 

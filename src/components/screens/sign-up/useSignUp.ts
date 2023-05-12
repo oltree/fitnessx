@@ -38,7 +38,6 @@ export const useSignUp = () => {
       const newNotification = {
         id: uuid(),
         message: 'Registration completed successfully!',
-        date: getFormattedDate(),
         isCompleted: false
       };
       dispatch(addNotification(newNotification));

@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { FC, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import RemoveButton from '@/components/common/buttons/remove-button/RemoveButton';
+import { RemoveButton } from '@/components/common';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
 

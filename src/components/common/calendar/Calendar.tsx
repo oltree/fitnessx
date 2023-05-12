@@ -2,39 +2,24 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import { memo, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { memo } from 'react';
 
-import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { useAppSelector } from '@/hooks/hooks';
 
 import { workoutsSelector } from '@/store/selectors';
-import { getCurrentWorkout } from '@/store/slices/current-workout.slice';
 
 import { DAYS } from '@/types/enams/days.enam';
-import { RoutePaths } from '@/types/route.type';
 
 import styles from './Calendar.module.scss';
 
-import { renderEventContent } from './event-contents';
+import { dayCellContent } from './day-content';
+import { renderEventContent } from './event-content';
+import { useCalendarEvents } from './useCalendarEvents';
 
 const Calendar = () => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const workouts = useAppSelector(workoutsSelector);
 
-  const handleEventClick = useCallback(
-    (checkInfo: any) => {
-      const foundWorkout = workouts.find(
-        workout => workout.id === checkInfo.event.id
-      );
-
-      if (foundWorkout) {
-        dispatch(getCurrentWorkout(foundWorkout));
-        navigate(RoutePaths.WORKOUT);
-      }
-    },
-    [dispatch, navigate, workouts]
-  );
+  const { onEventDrop, onEventClick } = useCalendarEvents(workouts);
 
   return (
     <div className={styles.calendar}>
@@ -51,9 +36,11 @@ const Calendar = () => {
         selectMirror={true}
         dayMaxEvents={true}
         eventContent={renderEventContent}
-        eventClick={handleEventClick}
+        eventClick={onEventClick}
         events={workouts}
+        eventDrop={onEventDrop}
         firstDay={DAYS.MONDAY}
+        dayCellContent={dayCellContent}
       />
     </div>
   );

@@ -25,19 +25,22 @@ const Notifications: FC = () => {
 
   return (
     <div className={styles.notifications}>
-      {notifications.map(notice => (
-        <div
-          key={notice.id}
-          onClick={() => handleClick(notice)}
-          className={cn(
-            styles.notice,
-            notice.isCompleted && styles.notice__success
-          )}
-        >
-          <p>{notice.message}</p>
-          <p>{notice.date}</p>
-        </div>
-      ))}
+      {notifications.map(notice => {
+        const message = `${notice.date} ${notice.message}!`;
+
+        return (
+          <div
+            key={notice.id}
+            onClick={() => handleClick(notice)}
+            className={cn(
+              styles.notice,
+              notice.isCompleted && styles.notice__success
+            )}
+          >
+            <p>{message}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };

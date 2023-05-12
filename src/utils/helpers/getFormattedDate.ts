@@ -1,5 +1,5 @@
-export const getFormattedDate = (date?: Date): string => {
-  const selectedDate = date || new Date();
+export const getFormattedDate = (dateString: Date) => {
+  const date = new Date(dateString);
 
-  return selectedDate.toISOString().replace('T', ' ').slice(0, 10);
+  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
 };

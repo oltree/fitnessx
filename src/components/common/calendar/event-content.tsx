@@ -1,10 +1,11 @@
+import { EventDropArg } from '@fullcalendar/core';
 import cn from 'classnames';
 
 import { ExerciseType } from '@/types/exercise.type';
 
 import styles from './Calendar.module.scss';
 
-export const renderEventContent = (eventInfo: any) => {
+export const renderEventContent = (eventInfo: EventDropArg) => {
   const isSuccess = eventInfo.event.extendedProps.exercises.every(
     (exercise: ExerciseType) => exercise.isCompleted
   );

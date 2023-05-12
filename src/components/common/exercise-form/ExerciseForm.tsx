@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid';
 
@@ -19,7 +19,11 @@ export interface ExerciseFormData extends Omit<ExerciseType, 'name' | 'icon'> {
   exercise: string;
 }
 
-const ExerciseForm: FC = () => {
+interface ExerciseFormProps {
+  startDate: Date;
+}
+
+const ExerciseForm: FC<ExerciseFormProps> = ({ startDate }) => {
   const dispatch = useAppDispatch();
   const {
     register,
@@ -28,33 +32,33 @@ const ExerciseForm: FC = () => {
     formState: { errors }
   } = useForm<ExerciseFormData>({ mode: 'onChange' });
 
-  const handleCreateExercise = useCallback(
-    (data: ExerciseFormData) => {
-      const { exercise, sets, reps, time, weight } = data;
-      const { name, icon } = JSON.parse(exercise);
-      const newExercise = {
-        id: uuid(),
-        name,
-        sets,
-        reps,
-        time,
-        weight,
-        icon,
-        isCompleted: false
-      };
+  const handleCreateExercise = (data: ExerciseFormData) => {
+    const { exercise, sets, reps, time, weight } = data;
+    const { name, icon } = JSON.parse(exercise);
+    const newExercise = {
+      id: uuid(),
+      name,
+      sets,
+      reps,
+      time,
+      weight,
+      icon,
+      isCompleted: false
+    };
 
-      dispatch(addExercise(newExercise));
+    dispatch(addExercise(newExercise));
 
-      reset();
-    },
-    [dispatch, reset]
-  );
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(handleCreateExercise)} className={styles.form}>
       <p className={styles.title}>Exersises</p>
 
-      <RadioGroup register={register('exercise', { required: true })} />
+      <RadioGroup
+        startDate={startDate}
+        register={register('exercise', { required: true })}
+      />
 
       <ExerciseDetails register={register} errors={errors} />
 

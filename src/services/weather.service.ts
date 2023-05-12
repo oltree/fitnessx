@@ -32,10 +32,11 @@ class WeatherService {
 
   async getWeatherMessage(city: string, activity: string): Promise<string> {
     const weatherData = await this.getWeatherData(city);
+
     if (this.isBadWeather(activity, weatherData)) {
-      return 'Плохая погода для ' + activity;
+      return 'will be bad weather for ' + activity;
     } else {
-      return 'Хорошая погода для ' + activity;
+      return 'will be good weather for ' + activity;
     }
   }
 }

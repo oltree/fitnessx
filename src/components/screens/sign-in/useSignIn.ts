@@ -37,7 +37,6 @@ export const useSignIn = () => {
       const newNotification = {
         id: uuid(),
         message: 'Login successful!',
-        date: getFormattedDate(),
         isCompleted: false
       };
       dispatch(addNotification(newNotification));
