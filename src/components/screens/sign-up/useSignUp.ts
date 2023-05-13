@@ -8,8 +8,6 @@ import { addNotification } from '@/store/slices/notifications.slice';
 
 import { AuthUserType } from '@/types/user.type';
 
-import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
-
 export const useSignUp = () => {
   const dispatch = useAppDispatch();
   const [message, setMessage] = useState('');

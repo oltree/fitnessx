@@ -41,4 +41,6 @@ class WeatherService {
   }
 }
 
-export default new WeatherService();
+const weatherServiceInstance = new WeatherService();
+
+export default weatherServiceInstance;
