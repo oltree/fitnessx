@@ -20,7 +20,8 @@
     .exercise {
       padding: 20px;
       @include center(flex, center, space-between);
-      background: $yellow;
+      gap: 20px;
+      background: $bg-blue;
       border-radius: 20px;
       cursor: pointer;
 

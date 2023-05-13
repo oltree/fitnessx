@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { RemoveButton } from '@/components/common';
 
-import { useAppDispatch, useAppSelector } from '@/hooks/hooks';
+import { useAppDispatch } from '@/hooks/hooks';
+import { useWorkout } from '@/hooks/useWorkout';
 
-import { currentWorkoutSelector } from '@/store/selectors';
 import { updateExerciseInCurrentWorkout } from '@/store/slices/current-workout.slice';
 import { removeWorkout, updateWorkout } from '@/store/slices/workouts.slice';
 
@@ -17,7 +17,7 @@ import styles from './Workout.module.scss';
 const Workout: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const workout = useAppSelector(currentWorkoutSelector);
+  const workout = useWorkout();
 
   const handleRemoveWorkout = () => {
     dispatch(removeWorkout(workout.id));
@@ -25,9 +25,17 @@ const Workout: FC = () => {
   };
 
   const handleCompleteExercise = (exerciseId: string) => {
-    dispatch(updateExerciseInCurrentWorkout(exerciseId));
+    const updatedWorkout = {
+      ...workout,
+      exercises: workout.exercises.map(exercise =>
+        exercise.id === exerciseId
+          ? { ...exercise, isCompleted: true }
+          : exercise
+      )
+    };
 
-    dispatch(updateWorkout(workout));
+    dispatch(updateExerciseInCurrentWorkout(exerciseId));
+    dispatch(updateWorkout(updatedWorkout));
   };
 
   return (
