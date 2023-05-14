@@ -8,6 +8,8 @@ import { addNotification } from '@/store/slices/notifications.slice';
 
 import { AuthUserType } from '@/types/user.type';
 
+import { getFormattedDate } from '@/utils/helpers/getFormattedDate';
+
 export const useSignUp = () => {
   const dispatch = useAppDispatch();
   const [message, setMessage] = useState('');
@@ -31,11 +33,10 @@ export const useSignUp = () => {
     if (userExists) {
       setMessage('User with this email already exists!');
     } else {
-      setMessage('Registration completed successfully!');
-
       const newNotification = {
         id: uuid(),
-        message: 'Registration completed successfully!',
+        date: getFormattedDate(new Date()),
+        message: 'registration completed successfully!',
         isCompleted: false
       };
       dispatch(addNotification(newNotification));
@@ -44,9 +45,9 @@ export const useSignUp = () => {
       localStorage.setItem('users', JSON.stringify(updatedUsers));
 
       setRedirect(true);
-
-      reset();
     }
+
+    reset();
   };
 
   const onSubmit = handleSubmit(registerUser);

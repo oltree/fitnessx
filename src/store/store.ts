@@ -18,7 +18,7 @@ import {
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['user', 'workouts', 'notifications']
+  whitelist: ['user', 'workouts']
 };
 
 const rootReducer = combineReducers({
