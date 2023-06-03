@@ -1,6 +1,6 @@
 {
-	"name": "workout",
-	"homepage": "https://oltree.github.io/fitnessx",
+	"name": "fitnessx",
+	"homepage": "https://oltree.github.io/fitness-app-front",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
